@@ -1,0 +1,54 @@
+﻿<Window x:Class="Course2.EntityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Course2"
+        xmlns:viewModels="clr-namespace:Course2.ViewModels"
+        xmlns:model="clr-namespace:Model;assembly=Model"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:EntityWindowViewModel}"
+        Title="EntityWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Имя сущности: "/>
+            <TextBox Text="{Binding Name}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Количество экземпляров сущности: "/>
+            <TextBox Text="{Binding InstanceCount}"/>
+        </StackPanel>
+        <ComboBox Grid.Row="2" Margin="5" ItemsSource="{Binding NameUniqueTypes}" SelectedItem="{Binding NameUniqueType}"/>
+        <Grid Grid.Row="3" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Атрибуты: " VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Добавить" Margin="5" Command="{Binding AddAttributeCommand}"/>
+                    <Button Content="Удалить" Margin="5" Command="{Binding DeleteAttributeCommand}" IsEnabled="{Binding SelectedAttribute, Converter={StaticResource ObjectToBoolConverter}}"/>
+                </StackPanel>
+            </StackPanel>
+            <ListBox Grid.Row="1" ItemsSource="{Binding Attributes}" SelectionMode="Single" SelectedItem="{Binding SelectedAttribute}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="model:Attribute">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Сохранить" Margin="5" Command="{Binding SaveCommand}" IsDefault="True"/>
+            <Button Content="Отмена" Margin="5" Command="{Binding CloseCommand}" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

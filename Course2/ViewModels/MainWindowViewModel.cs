@@ -36,18 +36,17 @@ namespace Course2.ViewModels
 
         public void CreateNewModel()
         {
-            //var entity1 = new Entity() { Name = "some entity" };
-            //var entity2 = new Entity() { Name = "second entity" };
-            //var relationship = new Relationship() { Entity1 = entity1, Entity2 = entity2, Name = "some relationship" };
-            //var model = new ModelGraph() { Name = "BLABLABLA MODEL FIRST", Entities = new[] { entity1, entity2 }, Relationships = new[] { relationship } };
-            //var modelWindow = new ModelWindow(model);
-            //var result = modelWindow.ShowDialog();
+            var entity1 = new Entity() { Name = "some entity" };
+            var entity2 = new Entity() { Name = "second entity" };
+            var relationship = new Relationship() { Entity1 = entity1, Entity2 = entity2, Name = "some relationship" };
+            var model = new ModelGraph() { Name = "BLABLABLA MODEL FIRST", Entities = new[] { entity1, entity2 }, Relationships = new[] { relationship } };
+            var modelWindow = new ModelWindow(model);
+            var result = modelWindow.ShowDialog();
 
-            //if (modelWindow.DataContext is ModelWindowViewModel vm)
-            //{
-            //    model = vm.Model;
-            //}
-            //MessageBox.Show(model.Name + model.Entities.Count);
+            if (modelWindow.DataContext is ModelWindowViewModel vm)
+            {
+                model = vm.Model;
+            }
         }
     }
 }

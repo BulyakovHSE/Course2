@@ -14,6 +14,7 @@ namespace Course2.ViewModels
             Relationships = new ObservableCollection<Relationship>(Model.Relationships);
             TransformationsModelText = new ObservableCollection<TransformationModelText>(Model.TransformationsModelText);
             TransformationsModelModel = new ObservableCollection<TransformationModelModel>(Model.TransformationsModelModel);
+            AddEntityCommand = new DelegateCommand(AddEntity);
             DeleteEntityCommand = new DelegateCommand(DeleteEntity);
             DeleteRelationshipCommand = new DelegateCommand(DeleteRelationship);
             DeleteTransformationModelTextCommand = new DelegateCommand(DeleteTransformationModelText);
@@ -97,6 +98,18 @@ namespace Course2.ViewModels
             TransformationsModelModel.Remove(SelectedTransformationModelModel);
         }
 
+        private void AddEntity()
+        {
+            var entity = new Entity();
+            var entityWindow = new EntityWindow(entity);
+            var result = entityWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if(entityWindow.DataContext is EntityWindowViewModel vm)
+                    Entities.Add(vm.Entity);
+            }
+        }
+
         private void Save()
         {
             Model.Name = Name;
@@ -104,6 +117,7 @@ namespace Course2.ViewModels
             Model.Relationships = Relationships;
             Model.TransformationsModelModel = TransformationsModelModel;
             Model.TransformationsModelText = TransformationsModelText;
+            CloseCommand.Execute(null);
         }
 
         #endregion
