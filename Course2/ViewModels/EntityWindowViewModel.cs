@@ -14,7 +14,9 @@ namespace Course2.ViewModels
         public EntityWindowViewModel(Entity entity)
         {
             Entity = new Entity{Id = entity.Id, EntityParent = entity.EntityParent, 
-                EntityParent1 = entity.EntityParent1, ModelGraphId = entity.ModelGraphId, ModelGraph = entity.ModelGraph};
+                EntityParent1 = entity.EntityParent1, ModelGraphId = entity.ModelGraphId, 
+                ModelGraph = entity.ModelGraph, TransformationRuleModelModel = entity.TransformationRuleModelModel, 
+                TransformationRuleModelModel1 = entity.TransformationRuleModelModel1, TransformationRuleModelText = entity.TransformationRuleModelText};
             Name = entity.Name;
             InstanceCount = entity.InstanceCount;
             NameUniqueType = entity.NameUniqueFlag;

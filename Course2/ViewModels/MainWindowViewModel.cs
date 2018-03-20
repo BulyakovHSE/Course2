@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -6,6 +8,8 @@ using System.Windows;
 using Model;
 using WPFMVVMLib.Commands;
 using WPFMVVMLib;
+using Attribute = Model.Attribute;
+
 //using Model;
 
 namespace Course2.ViewModels
@@ -83,10 +87,10 @@ namespace Course2.ViewModels
                         //_container.ModelGraphSet.Add(vm.Model);
                         var model = _container.ModelGraphSet.First(x => x.Id == SelectedModelGraph.Id);
                         model.Name = m.Name;
-                        model.Entities = m.Entities;
-                        model.Relationships = m.Relationships;
-                        model.TransformationsModelModel = m.TransformationsModelModel;
-                        model.TransformationsModelText = m.TransformationsModelText;
+                        SynchronizeEntities(model.Entities, m.Entities);
+                        //model.Relationships = m.Relationships;
+                        //model.TransformationsModelModel = m.TransformationsModelModel;
+                        //model.TransformationsModelText = m.TransformationsModelText;
                         _container.SaveChanges();
                         Models.Insert(Models.IndexOf(SelectedModelGraph), vm.Model);
                         Models.Remove(SelectedModelGraph);
@@ -97,6 +101,62 @@ namespace Course2.ViewModels
                             MessageBoxImage.Error);
                     }
                 }
+            }
+        }
+
+        private void SynchronizeAttributes(ICollection<Attribute> attributes,
+            ICollection<Attribute> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            foreach (var attribute in synchronizeWith.ToList())
+            {
+                if (attributes.Any(x => x.Id == attribute.Id))
+                {
+                    var atr = attributes.First(x => x.Id == attribute.Id);
+                    atr.DefaultValue = attribute.DefaultValue;
+                    atr.Description = attribute.Description;
+                    atr.Value = attribute.Value;
+                    atr.Type = attribute.Type;
+                    atr.Name = attribute.Name;
+                    findedIds.Add(attribute.Id);
+                }
+                else
+                {
+                    attributes.Add(attribute);
+                }
+            }
+
+            var attributesToDelete = attributes.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var attribute in attributesToDelete)
+            {
+                attributes.Remove(attribute);
+            }
+        }
+
+        private void SynchronizeEntities(ICollection<Entity> entities, ICollection<Entity> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            foreach (var entity in synchronizeWith.ToList())
+            {
+                if (entities.Any(x => x.Id == entity.Id))
+                {
+                    var ent = entities.First(x => x.Id == entity.Id);
+                    SynchronizeAttributes(ent.Attributes, entity.Attributes);
+                    ent.InstanceCount = entity.InstanceCount;
+                    ent.Name = entity.Name;
+                    ent.NameUniqueFlag = entity.NameUniqueFlag;
+                    findedIds.Add(entity.Id);
+                }
+                else
+                {
+                    entities.Add(entity);
+                }
+            }
+
+            var entitiesToDelete = entities.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var entity in entitiesToDelete)
+            {
+                entities.Remove(entity);
             }
         }
     }
