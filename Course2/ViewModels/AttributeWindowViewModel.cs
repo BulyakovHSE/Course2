@@ -8,7 +8,7 @@ namespace Course2.ViewModels
     {
         public AttributeWindowViewModel(Attribute attribute)
         {
-            Attribute = new Attribute();
+            Attribute = new Attribute{Id = attribute.Id, EntityId = attribute.EntityId, RelationshipId = attribute.RelationshipId};
             Name = attribute.Name;
             Type = attribute.Type;
             Value = attribute.Value;
@@ -19,19 +19,23 @@ namespace Course2.ViewModels
 
         public Attribute Attribute { get; set; }
 
+        public bool IsValid => !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Type) &&
+                               !string.IsNullOrEmpty(Value) && !string.IsNullOrEmpty(DefaultValue) &&
+                               !string.IsNullOrEmpty(Description);
+
         public string Name { get; set; }
 
         public string Type { get; set; }
 
-        public string Value { get;set; }
+        public string Value { get; set; }
 
         public string DefaultValue { get; set; }
 
-        public string Description { get;set; }
+        public string Description { get; set; }
 
         public DelegateCommand CloseCommand { get; set; }
 
-        public DelegateCommand SaveCommand { get;set; }
+        public DelegateCommand SaveCommand { get; set; }
 
         public SimpleCommand<bool?> SetDialogResultCommand { get; set; }
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Model;
@@ -10,9 +12,10 @@ namespace Course2.ViewModels
 {
     public class RelationshipWindowViewModel : ViewModelBase
     {
-        public RelationshipWindowViewModel(Relationship relationship)
+        public RelationshipWindowViewModel(Relationship relationship, IList<Entity> entities)
         {
-            Relationship = new Relationship();
+            Relationship = new Relationship{Id = relationship.Id, 
+                ModelGraph = relationship.ModelGraph, ModelGraphId = relationship.ModelGraphId};
             Name = relationship.Name;
             Multiplicity1 = relationship.Multiplicity1;
             Multiplicity2 = relationship.Multiplicity2;
@@ -23,12 +26,8 @@ namespace Course2.ViewModels
             Entity1 = relationship.Entity1;
             Entity2 = relationship.Entity2;
             Attributes = new ObservableCollection<Attribute>(relationship.Attributes);
-            using (var db = new VmaContainer())
-            {
-                var entities = db.EntitySet.ToList();
-                Entity1List = new ObservableCollection<Entity>(entities);
-                Entity2List = new ObservableCollection<Entity>(entities);
-            }
+            Entity1List = new ObservableCollection<Entity>(entities);
+            Entity2List = new ObservableCollection<Entity>(entities);
 
             AddAttributeCommand = new DelegateCommand(AddAttribute);
             EditAttributeCommand = new DelegateCommand(EditAttribute);
@@ -43,7 +42,7 @@ namespace Course2.ViewModels
 
         public NameUniqueType NameUniqueType { get; set; }
 
-        public ObservableCollection<NameUniqueType> NameUniqueTypes { get;set; }
+        public ObservableCollection<NameUniqueType> NameUniqueTypes { get; set; }
 
         public RelationshipType Type { get; set; }
 
@@ -63,7 +62,7 @@ namespace Course2.ViewModels
 
         public Relationship Relationship { get; set; }
 
-        public DelegateCommand CloseCommand { get;set; }
+        public DelegateCommand CloseCommand { get; set; }
 
         public DelegateCommand SaveCommand { get; set; }
 

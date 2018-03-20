@@ -22,10 +22,10 @@ namespace Course2
     /// </summary>
     public partial class RelationshipWindow : Window
     {
-        public RelationshipWindow(Relationship relationship)
+        public RelationshipWindow(Relationship relationship, IList<Entity> entities)
         {
             InitializeComponent();
-            var vm = new RelationshipWindowViewModel(relationship)
+            var vm = new RelationshipWindowViewModel(relationship, entities)
             {
                 CloseCommand = new DelegateCommand(Close),
                 SetDialogResultCommand = new SimpleCommand<bool?>(SetDialogResult)

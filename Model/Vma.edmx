@@ -37,14 +37,6 @@
       <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
       <End Role="Entity" EntitySet="EntitySet" />
     </AssociationSet>
-    <AssociationSet Name="EntityAttribute" Association="Vma.Store.EntityAttribute">
-      <End Role="Entity" EntitySet="EntitySet" />
-      <End Role="Attribute" EntitySet="AttributeSet" />
-    </AssociationSet>
-    <AssociationSet Name="RelationshipAttribute" Association="Vma.Store.RelationshipAttribute">
-      <End Role="Relationship" EntitySet="RelationshipSet" />
-      <End Role="Attribute" EntitySet="AttributeSet" />
-    </AssociationSet>
     <AssociationSet Name="RelationshipRelationshipParent" Association="Vma.Store.RelationshipRelationshipParent">
       <End Role="Relationship" EntitySet="RelationshipSet" />
       <End Role="RelationshipParent" EntitySet="RelationshipParentSet" />
@@ -93,6 +85,14 @@
       <End Role="Relationship" EntitySet="RelationshipSet" />
       <End Role="Entity" EntitySet="EntitySet" />
     </AssociationSet>
+    <AssociationSet Name="RelationshipAttribute" Association="Vma.Store.RelationshipAttribute">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="Attribute" EntitySet="AttributeSet" />
+    </AssociationSet>
+    <AssociationSet Name="EntityAttribute" Association="Vma.Store.EntityAttribute">
+      <End Role="Entity" EntitySet="EntitySet" />
+      <End Role="Attribute" EntitySet="AttributeSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TransformationRuleModelModelSet">
     <Key>
@@ -140,6 +140,8 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="EntityId" Type="int" Nullable="false" />
     <Property Name="RelationshipId" Type="int" Nullable="false" />
+    <Property Name="RelationshipAttribute_Attribute_Id" Type="int" Nullable="true" />
+    <Property Name="EntityAttribute_Attribute_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="RelationshipParentSet">
     <Key>
@@ -253,30 +255,6 @@
       </Principal>
       <Dependent Role="TransformationRuleModelText">
         <PropertyRef Name="Initial_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EntityAttribute">
-    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
-    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entity">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Attribute">
-        <PropertyRef Name="EntityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RelationshipAttribute">
-    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="1" />
-    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Relationship">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Attribute">
-        <PropertyRef Name="RelationshipId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -424,6 +402,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="RelationshipAttribute">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="0..1" />
+    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relationship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attribute">
+        <PropertyRef Name="RelationshipAttribute_Attribute_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EntityAttribute">
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="0..1" />
+    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attribute">
+        <PropertyRef Name="EntityAttribute_Attribute_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -459,14 +461,6 @@
           <AssociationSet Name="TransformationRuleModelTextEntity" Association="Vma.TransformationRuleModelTextEntity">
             <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
             <End Role="Entity" EntitySet="EntitySet" />
-          </AssociationSet>
-          <AssociationSet Name="EntityAttribute" Association="Vma.EntityAttribute">
-            <End Role="Entity" EntitySet="EntitySet" />
-            <End Role="Attribute" EntitySet="AttributeSet" />
-          </AssociationSet>
-          <AssociationSet Name="RelationshipAttribute" Association="Vma.RelationshipAttribute">
-            <End Role="Relationship" EntitySet="RelationshipSet" />
-            <End Role="Attribute" EntitySet="AttributeSet" />
           </AssociationSet>
           <AssociationSet Name="RelationshipRelationshipParent" Association="Vma.RelationshipRelationshipParent">
             <End Role="Relationship" EntitySet="RelationshipSet" />
@@ -515,6 +509,14 @@
           <AssociationSet Name="RelationshipEntity1" Association="Vma.RelationshipEntity1">
             <End Role="Relationship" EntitySet="RelationshipSet" />
             <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipAttribute" Association="Vma.RelationshipAttribute">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="Attribute" EntitySet="AttributeSet" />
+          </AssociationSet>
+          <AssociationSet Name="EntityAttribute" Association="Vma.EntityAttribute">
+            <End Role="Entity" EntitySet="EntitySet" />
+            <End Role="Attribute" EntitySet="AttributeSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="TransformationRuleModelModel">
@@ -567,10 +569,8 @@
           <Property Name="Value" Type="String" Nullable="false" />
           <Property Name="DefaultValue" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="EntityId" Type="Int32" Nullable="false" />
-          <Property Name="RelationshipId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Entity" Relationship="Vma.EntityAttribute" FromRole="Attribute" ToRole="Entity" />
-          <NavigationProperty Name="Relationship" Relationship="Vma.RelationshipAttribute" FromRole="Attribute" ToRole="Relationship" />
+          <Property Name="EntityId" Nullable="false" Type="Int32" />
+          <Property Name="RelationshipId" Nullable="false" Type="Int32" />
         </EntityType>
         <EntityType Name="RelationshipParent">
           <Key>
@@ -613,10 +613,10 @@
           <NavigationProperty Name="TransformationRuleModelModel" Relationship="Vma.TransformationRuleModelModelEntity" FromRole="Entity" ToRole="TransformationRuleModelModel" />
           <NavigationProperty Name="TransformationRuleModelModel1" Relationship="Vma.TransformationRuleModelModelEntity1" FromRole="Entity" ToRole="TransformationRuleModelModel" />
           <NavigationProperty Name="TransformationRuleModelText" Relationship="Vma.TransformationRuleModelTextEntity" FromRole="Entity" ToRole="TransformationRuleModelText" />
-          <NavigationProperty Name="Attributes" Relationship="Vma.EntityAttribute" FromRole="Entity" ToRole="Attribute" />
           <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphEntity" FromRole="Entity" ToRole="ModelGraph" />
           <NavigationProperty Name="EntityParent" Relationship="Vma.EntityEntityParent" FromRole="Entity" ToRole="EntityParent" />
           <NavigationProperty Name="EntityParent1" Relationship="Vma.EntityParentEntity" FromRole="Entity" ToRole="EntityParent" />
+          <NavigationProperty Name="Attributes" Relationship="Vma.EntityAttribute" FromRole="Entity" ToRole="Attribute" />
         </EntityType>
         <EntityType Name="EntityParent">
           <Key>
@@ -637,11 +637,11 @@
           <Property Name="NameUniqueFlag" Type="Vma.NameUniqueType" Nullable="false" />
           <Property Name="Type" Type="Vma.RelationshipType" Nullable="false" />
           <Property Name="ModelGraphId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Attributes" Relationship="Vma.RelationshipAttribute" FromRole="Relationship" ToRole="Attribute" />
           <NavigationProperty Name="RelationshipParent" Relationship="Vma.RelationshipRelationshipParent" FromRole="Relationship" ToRole="RelationshipParent" />
           <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphRelationship" FromRole="Relationship" ToRole="ModelGraph" />
           <NavigationProperty Name="Entity1" Relationship="Vma.RelationshipEntity" FromRole="Relationship" ToRole="Entity" />
           <NavigationProperty Name="Entity2" Relationship="Vma.RelationshipEntity1" FromRole="Relationship" ToRole="Entity" />
+          <NavigationProperty Name="Attributes" Relationship="Vma.RelationshipAttribute" FromRole="Relationship" ToRole="Attribute" />
         </EntityType>
         <Association Name="TransformationModelModelTransformationRuleModelModel">
           <End Type="Vma.TransformationModelModel" Role="TransformationModelModel" Multiplicity="1" />
@@ -678,30 +678,6 @@
         <Association Name="TransformationRuleModelTextEntity">
           <End Type="Vma.TransformationRuleModelText" Role="TransformationRuleModelText" Multiplicity="0..1" />
           <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
-        </Association>
-        <Association Name="EntityAttribute">
-          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
-          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Attribute">
-              <PropertyRef Name="EntityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="RelationshipAttribute">
-          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="1" />
-          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Relationship">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Attribute">
-              <PropertyRef Name="RelationshipId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="RelationshipRelationshipParent">
           <End Type="Vma.Relationship" Role="Relationship" Multiplicity="1" />
@@ -792,6 +768,14 @@
         <Association Name="RelationshipEntity1">
           <End Type="Vma.Relationship" Role="Relationship" Multiplicity="0..1" />
           <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="RelationshipAttribute">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="0..1" />
+          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
+        </Association>
+        <Association Name="EntityAttribute">
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="0..1" />
+          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -988,6 +972,24 @@
       <EndProperty Name="Relationship">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationshipAttribute" TypeName="Vma.RelationshipAttribute" StoreEntitySet="AttributeSet">
+      <EndProperty Name="Relationship">
+        <ScalarProperty Name="Id" ColumnName="RelationshipAttribute_Attribute_Id" />
+      </EndProperty>
+      <EndProperty Name="Attribute">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="RelationshipAttribute_Attribute_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EntityAttribute" TypeName="Vma.EntityAttribute" StoreEntitySet="AttributeSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="EntityAttribute_Attribute_Id" />
+      </EndProperty>
+      <EndProperty Name="Attribute">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="EntityAttribute_Attribute_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

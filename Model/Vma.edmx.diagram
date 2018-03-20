@@ -21,8 +21,6 @@
         <AssociationConnector Association="Vma.TransformationRuleModelModelEntity1" />
         <AssociationConnector Association="Vma.TransformationModelTextTransformationRuleModelText" />
         <AssociationConnector Association="Vma.TransformationRuleModelTextEntity" />
-        <AssociationConnector Association="Vma.EntityAttribute" />
-        <AssociationConnector Association="Vma.RelationshipAttribute" />
         <AssociationConnector Association="Vma.RelationshipRelationshipParent" />
         <AssociationConnector Association="Vma.RelationshipRelationshipParent1" />
         <AssociationConnector Association="Vma.ModelGraphModelGraphParent" />
@@ -35,6 +33,8 @@
         <AssociationConnector Association="Vma.ModelGraphRelationship" />
         <AssociationConnector Association="Vma.RelationshipEntity" />
         <AssociationConnector Association="Vma.RelationshipEntity1" />
+        <AssociationConnector Association="Vma.RelationshipAttribute" />
+        <AssociationConnector Association="Vma.EntityAttribute" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

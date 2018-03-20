@@ -13,7 +13,8 @@ namespace Course2.ViewModels
     {
         public EntityWindowViewModel(Entity entity)
         {
-            Entity = new Entity();
+            Entity = new Entity{Id = entity.Id, EntityParent = entity.EntityParent, 
+                EntityParent1 = entity.EntityParent1, ModelGraphId = entity.ModelGraphId, ModelGraph = entity.ModelGraph};
             Name = entity.Name;
             InstanceCount = entity.InstanceCount;
             NameUniqueType = entity.NameUniqueFlag;

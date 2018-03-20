@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2018 12:32:28
+-- Date Created: 03/21/2018 01:11:11
 -- Generated from EDMX file: C:\Users\bulya\source\repos\Course2\Model\Vma.edmx
 -- --------------------------------------------------
 
@@ -31,12 +31,6 @@ IF OBJECT_ID(N'[dbo].[FK_TransformationModelTextTransformationRuleModelText]', '
 GO
 IF OBJECT_ID(N'[dbo].[FK_TransformationRuleModelTextEntity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TransformationRuleModelTextSet] DROP CONSTRAINT [FK_TransformationRuleModelTextEntity];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EntityAttribute]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AttributeSet] DROP CONSTRAINT [FK_EntityAttribute];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RelationshipAttribute]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AttributeSet] DROP CONSTRAINT [FK_RelationshipAttribute];
 GO
 IF OBJECT_ID(N'[dbo].[FK_RelationshipRelationshipParent]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RelationshipParentSet] DROP CONSTRAINT [FK_RelationshipRelationshipParent];
@@ -67,6 +61,18 @@ IF OBJECT_ID(N'[dbo].[FK_EntityParentEntity]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ModelGraphRelationship]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RelationshipSet] DROP CONSTRAINT [FK_ModelGraphRelationship];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RelationshipEntity]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RelationshipSet] DROP CONSTRAINT [FK_RelationshipEntity];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RelationshipEntity1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RelationshipSet] DROP CONSTRAINT [FK_RelationshipEntity1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EntityAttribute]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AttributeSet] DROP CONSTRAINT [FK_EntityAttribute];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RelationshipAttribute]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AttributeSet] DROP CONSTRAINT [FK_RelationshipAttribute];
 GO
 
 -- --------------------------------------------------
@@ -154,7 +160,9 @@ CREATE TABLE [dbo].[AttributeSet] (
     [DefaultValue] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [EntityId] int  NOT NULL,
-    [RelationshipId] int  NOT NULL
+    [RelationshipId] int  NOT NULL,
+    [RelationshipAttribute_Attribute_Id] int  NULL,
+    [EntityAttribute_Attribute_Id] int  NULL
 );
 GO
 
@@ -362,36 +370,6 @@ ON [dbo].[TransformationRuleModelTextSet]
     ([Initial_Id]);
 GO
 
--- Creating foreign key on [EntityId] in table 'AttributeSet'
-ALTER TABLE [dbo].[AttributeSet]
-ADD CONSTRAINT [FK_EntityAttribute]
-    FOREIGN KEY ([EntityId])
-    REFERENCES [dbo].[EntitySet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EntityAttribute'
-CREATE INDEX [IX_FK_EntityAttribute]
-ON [dbo].[AttributeSet]
-    ([EntityId]);
-GO
-
--- Creating foreign key on [RelationshipId] in table 'AttributeSet'
-ALTER TABLE [dbo].[AttributeSet]
-ADD CONSTRAINT [FK_RelationshipAttribute]
-    FOREIGN KEY ([RelationshipId])
-    REFERENCES [dbo].[RelationshipSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RelationshipAttribute'
-CREATE INDEX [IX_FK_RelationshipAttribute]
-ON [dbo].[AttributeSet]
-    ([RelationshipId]);
-GO
-
 -- Creating foreign key on [Relationship_Id] in table 'RelationshipParentSet'
 ALTER TABLE [dbo].[RelationshipParentSet]
 ADD CONSTRAINT [FK_RelationshipRelationshipParent]
@@ -570,6 +548,36 @@ GO
 CREATE INDEX [IX_FK_RelationshipEntity1]
 ON [dbo].[RelationshipSet]
     ([Entity2_Id]);
+GO
+
+-- Creating foreign key on [RelationshipAttribute_Attribute_Id] in table 'AttributeSet'
+ALTER TABLE [dbo].[AttributeSet]
+ADD CONSTRAINT [FK_RelationshipAttribute]
+    FOREIGN KEY ([RelationshipAttribute_Attribute_Id])
+    REFERENCES [dbo].[RelationshipSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RelationshipAttribute'
+CREATE INDEX [IX_FK_RelationshipAttribute]
+ON [dbo].[AttributeSet]
+    ([RelationshipAttribute_Attribute_Id]);
+GO
+
+-- Creating foreign key on [EntityAttribute_Attribute_Id] in table 'AttributeSet'
+ALTER TABLE [dbo].[AttributeSet]
+ADD CONSTRAINT [FK_EntityAttribute]
+    FOREIGN KEY ([EntityAttribute_Attribute_Id])
+    REFERENCES [dbo].[EntitySet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EntityAttribute'
+CREATE INDEX [IX_FK_EntityAttribute]
+ON [dbo].[AttributeSet]
+    ([EntityAttribute_Attribute_Id]);
 GO
 
 -- --------------------------------------------------

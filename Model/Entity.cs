@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Entity : ICloneable
+    public partial class Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Entity()
@@ -29,14 +29,10 @@ namespace Model
         public virtual TransformationRuleModelModel TransformationRuleModelModel { get; set; }
         public virtual TransformationRuleModelModel TransformationRuleModelModel1 { get; set; }
         public virtual TransformationRuleModelText TransformationRuleModelText { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Attribute> Attributes { get; set; }
         public virtual ModelGraph ModelGraph { get; set; }
         public virtual EntityParent EntityParent { get; set; }
         public virtual EntityParent EntityParent1 { get; set; }
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attribute> Attributes { get; set; }
     }
 }

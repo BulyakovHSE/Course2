@@ -19,26 +19,26 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Имя атрибута: "/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock Text="Тип атрибута: "/>
-            <TextBox Text="{Binding Type}"/>
+            <TextBox Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock Text="Значение: "/>
-            <TextBox Text="{Binding Value}"/>
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Vertical">
             <TextBlock Text="Значение по умолчанию: "/>
-            <TextBox Text="{Binding DefaultValue}"/>
+            <TextBox Text="{Binding DefaultValue, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Orientation="Vertical">
             <TextBlock Text="Описание: "/>
-            <TextBox Text="{Binding Description}"/>
+            <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Orientation="Vertical">
-            <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="5"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="5" IsEnabled="{Binding IsValid}"/>
             <Button Content="Отмена" Command="{Binding CloseCommand}" Margin="5"/>
         </StackPanel>
     </Grid>

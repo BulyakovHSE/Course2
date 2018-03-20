@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ModelGraph : ICloneable
+    public partial class ModelGraph
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ModelGraph()
@@ -36,10 +36,5 @@ namespace Model
         public virtual ICollection<Entity> Entities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Relationship> Relationships { get; set; }
-
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
     }
 }

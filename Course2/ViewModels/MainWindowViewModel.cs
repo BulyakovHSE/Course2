@@ -41,7 +41,7 @@ namespace Course2.ViewModels
                 .Include("TransformationsModelModel.TransformationRules");
             foreach (var modelGraph in models)
             {
-                _container.ModelGraphSet.Remove(modelGraph);
+                Models.Add(modelGraph);
             }
         }
 
@@ -75,11 +75,18 @@ namespace Course2.ViewModels
             {
                 if (modelWindow.DataContext is ModelWindowViewModel vm)
                 {
+                    var m = vm.Model;
                     try
                     {
-                        _container.ModelGraphSet.Attach(SelectedModelGraph);
-                        _container.ModelGraphSet.Remove(SelectedModelGraph);
-                        _container.ModelGraphSet.Add(vm.Model);
+                        //_container.ModelGraphSet.Attach(SelectedModelGraph);
+                        //_container.ModelGraphSet.Remove(SelectedModelGraph);
+                        //_container.ModelGraphSet.Add(vm.Model);
+                        var model = _container.ModelGraphSet.First(x => x.Id == SelectedModelGraph.Id);
+                        model.Name = m.Name;
+                        model.Entities = m.Entities;
+                        model.Relationships = m.Relationships;
+                        model.TransformationsModelModel = m.TransformationsModelModel;
+                        model.TransformationsModelText = m.TransformationsModelText;
                         _container.SaveChanges();
                         Models.Insert(Models.IndexOf(SelectedModelGraph), vm.Model);
                         Models.Remove(SelectedModelGraph);

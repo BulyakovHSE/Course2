@@ -9,7 +9,7 @@ namespace Course2.ViewModels
     {
         public ModelWindowViewModel(ModelGraph model)
         {
-            Model = new ModelGraph();
+            Model = new ModelGraph{Id = model.Id, ModelGraphParent = model.ModelGraphParent, ModelGraphParent1 = model.ModelGraphParent1};
             Name = model.Name;
             Entities = new ObservableCollection<Entity>(model.Entities);
             Relationships = new ObservableCollection<Relationship>(model.Relationships);
@@ -141,7 +141,7 @@ namespace Course2.ViewModels
         private void AddRelationship()
         {
             var relationship = new Relationship();
-            var relationshipWindow = new RelationshipWindow(relationship);
+            var relationshipWindow = new RelationshipWindow(relationship, Entities);
             var result = relationshipWindow.ShowDialog();
             if (result.HasValue && result.Value)
             {
@@ -153,7 +153,7 @@ namespace Course2.ViewModels
         private void EditRelationship()
         {
             if(SelectedRelationship == null) return;
-            var relationshipWindow = new RelationshipWindow(SelectedRelationship);
+            var relationshipWindow = new RelationshipWindow(SelectedRelationship, Entities);
             var result = relationshipWindow.ShowDialog();
             if (result.HasValue && result.Value)
             {
