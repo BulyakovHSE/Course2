@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using Model;
 using WPFMVVMLib;
 using WPFMVVMLib.Commands;
@@ -9,45 +8,70 @@ using Attribute = Model.Attribute;
 
 namespace Course2.ViewModels
 {
-    public class EntityWindowViewModel : ViewModelBase
+    public class RelationshipWindowViewModel : ViewModelBase
     {
-        public EntityWindowViewModel(Entity entity)
+        public RelationshipWindowViewModel(Relationship relationship)
         {
-            Entity = new Entity();
-            Name = entity.Name;
-            InstanceCount = entity.InstanceCount;
-            NameUniqueType = entity.NameUniqueFlag;
+            Relationship = new Relationship();
+            Name = relationship.Name;
+            Multiplicity1 = relationship.Multiplicity1;
+            Multiplicity2 = relationship.Multiplicity2;
+            NameUniqueType = relationship.NameUniqueFlag;
             NameUniqueTypes = new ObservableCollection<NameUniqueType>(Enum.GetValues(typeof(NameUniqueType)).OfType<NameUniqueType>());
-            Attributes = new ObservableCollection<Attribute>(entity.Attributes);
+            Type = relationship.Type;
+            Types = new ObservableCollection<RelationshipType>(Enum.GetValues(typeof(RelationshipType)).OfType<RelationshipType>());
+            Entity1 = relationship.Entity1;
+            Entity2 = relationship.Entity2;
+            Attributes = new ObservableCollection<Attribute>(relationship.Attributes);
+            using (var db = new VmaContainer())
+            {
+                var entities = db.EntitySet.ToList();
+                Entity1List = new ObservableCollection<Entity>(entities);
+                Entity2List = new ObservableCollection<Entity>(entities);
+            }
+
             AddAttributeCommand = new DelegateCommand(AddAttribute);
-            DeleteAttributeCommand = new DelegateCommand(DeleteAttribute);
             EditAttributeCommand = new DelegateCommand(EditAttribute);
-            SaveCommand = new DelegateCommand(Save);
+            DeleteAttributeCommand = new DelegateCommand(DeleteAttribute);
         }
 
-        public Entity Entity { get; set; }
+        public string Name { get; set; }
 
-        public string Name { get;set; }
+        public int Multiplicity1 { get; set; }
 
-        public int InstanceCount { get; set; }
+        public int Multiplicity2 { get; set; }
 
         public NameUniqueType NameUniqueType { get; set; }
 
-        public ObservableCollection<NameUniqueType> NameUniqueTypes { get; set; }
+        public ObservableCollection<NameUniqueType> NameUniqueTypes { get;set; }
+
+        public RelationshipType Type { get; set; }
+
+        public ObservableCollection<RelationshipType> Types { get; set; }
+
+        public ObservableCollection<Entity> Entity1List { get; set; }
+
+        public ObservableCollection<Entity> Entity2List { get; set; }
+
+        public Entity Entity1 { get; set; }
+
+        public Entity Entity2 { get; set; }
 
         public ObservableCollection<Attribute> Attributes { get; set; }
 
         public Attribute SelectedAttribute { get; set; }
+
+        public Relationship Relationship { get; set; }
+
+        public DelegateCommand CloseCommand { get;set; }
+
+        public DelegateCommand SaveCommand { get; set; }
 
         public DelegateCommand AddAttributeCommand { get; set; }
 
         public DelegateCommand DeleteAttributeCommand { get; set; }
 
         public DelegateCommand EditAttributeCommand { get; set; }
-
-        public DelegateCommand CloseCommand { get; set; }
-
-        public DelegateCommand SaveCommand { get; set; }
 
         public SimpleCommand<bool?> SetDialogResultCommand { get; set; }
 
@@ -67,13 +91,13 @@ namespace Course2.ViewModels
 
         private void DeleteAttribute()
         {
-            if(SelectedAttribute == null)return;
+            if (SelectedAttribute == null) return;
             Attributes.Remove(SelectedAttribute);
         }
 
         private void EditAttribute()
         {
-            if(SelectedAttribute == null) return;
+            if (SelectedAttribute == null) return;
             var attributeWindow = new AttributeWindow(SelectedAttribute);
             var result = attributeWindow.ShowDialog();
             if (result.HasValue && result.Value)
@@ -84,16 +108,6 @@ namespace Course2.ViewModels
                     Attributes.Remove(SelectedAttribute);
                 }
             }
-        }
-
-        private void Save()
-        {
-            Entity.Name = Name;
-            Entity.InstanceCount = InstanceCount;
-            Entity.Attributes = Attributes;
-            Entity.NameUniqueFlag = NameUniqueType;
-            SetDialogResultCommand.Execute(true);
-            CloseCommand.Execute(null);
         }
     }
 }

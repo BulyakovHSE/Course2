@@ -11,21 +11,27 @@
         DataContext="{StaticResource MainWindowViewModel}"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
             <Button Content="Загрузить модели" Command="{Binding LoadModelsCommand}"/>
             <Button Content="Создать новую модель" Command="{Binding CreateNewModelCommand}"/>
-            <ListBox ItemsSource="{Binding Models}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="model1:ModelGraph">
-                        <TextBlock Text="{Binding Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Button Content="Изменить модель" Command="{Binding EditModelGraphCommand}"/>
         </StackPanel>
+
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModelGraph}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="model1:ModelGraph">
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>

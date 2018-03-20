@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Attribute
+    public partial class Attribute : ICloneable
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -25,5 +25,9 @@ namespace Model
     
         public virtual Entity Entity { get; set; }
         public virtual Relationship Relationship { get; set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

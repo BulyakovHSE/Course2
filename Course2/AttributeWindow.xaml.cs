@@ -12,20 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Course2.ViewModels;
-using Model;
 using WPFMVVMLib.Commands;
 
 namespace Course2
 {
     /// <summary>
-    /// Interaction logic for ModelWindow.xaml
+    /// Interaction logic for AttributeWindow.xaml
     /// </summary>
-    public partial class ModelWindow : Window
+    public partial class AttributeWindow : Window
     {
-        public ModelWindow(ModelGraph model)
+        public AttributeWindow(Model.Attribute attribute)
         {
             InitializeComponent();
-            var vm = new ModelWindowViewModel(model) { CloseCommand = new DelegateCommand(this.Close),
+            var vm = new AttributeWindowViewModel(attribute) { CloseCommand = new DelegateCommand(Close), 
                 SetDialogResultCommand = new SimpleCommand<bool?>(SetDialogResult)};
             DataContext = vm;
         }

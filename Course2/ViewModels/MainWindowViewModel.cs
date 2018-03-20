@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Runtime.Serialization;
 using System.Windows;
 using Model;
 using WPFMVVMLib.Commands;
@@ -9,46 +12,87 @@ namespace Course2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private VmaContainer _container;
+
         public MainWindowViewModel()
         {
             Models = new ObservableCollection<ModelGraph>();
             LoadModelsCommand = new DelegateCommand(LoadModels);
             CreateNewModelCommand = new DelegateCommand(CreateNewModel);
+            EditModelGraphCommand = new DelegateCommand(EditModelGraph);
+            _container = new VmaContainer();
         }
 
         public ObservableCollection<ModelGraph> Models { get; set; }
+
+        public ModelGraph SelectedModelGraph { get; set; }
 
         public DelegateCommand LoadModelsCommand { get; set; }
 
         public DelegateCommand CreateNewModelCommand { get; set; }
 
+        public DelegateCommand EditModelGraphCommand { get; set; }
+
         public void LoadModels()
         {
-            using (var db = new VmaContainer())
+            Models.Clear();
+            var models = _container.ModelGraphSet.Include("Entities.Attributes").Include("Relationships.Attributes")
+                .Include("TransformationsModelText.TransformationRules")
+                .Include("TransformationsModelModel.TransformationRules");
+            foreach (var modelGraph in models)
             {
-                var models = db.ModelGraphSet;
-                foreach (var modelGraph in models)
-                {
-                    Models.Add(modelGraph);
-                }
+                _container.ModelGraphSet.Remove(modelGraph);
             }
         }
 
         public void CreateNewModel()
         {
-            var entity1 = new Entity() { Name = "some entity" };
-            var entity2 = new Entity() { Name = "second entity" };
-            var relationship = new Relationship() { Entity1 = entity1, Entity2 = entity2, Name = "some relationship" };
-            var model = new ModelGraph() { Name = "BLABLABLA MODEL FIRST", Entities = new[] { entity1, entity2 }, Relationships = new[] { relationship } };
+            var model = new ModelGraph();
             var modelWindow = new ModelWindow(model);
             var result = modelWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+                if (modelWindow.DataContext is ModelWindowViewModel vm)
+                {
+                    try
+                    {
+                        _container.ModelGraphSet.Add(vm.Model);
+                        _container.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Не удалось сохранить изменений в базе данных\n" + e.Message, "Ошибка", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                }
+        }
 
-            if (modelWindow.DataContext is ModelWindowViewModel vm)
+        private void EditModelGraph()
+        {
+            if (SelectedModelGraph == null) return;
+            var modelWindow = new ModelWindow(SelectedModelGraph);
+            var result = modelWindow.ShowDialog();
+            if (result.HasValue && result.Value)
             {
-                model = vm.Model;
+                if (modelWindow.DataContext is ModelWindowViewModel vm)
+                {
+                    try
+                    {
+                        _container.ModelGraphSet.Attach(SelectedModelGraph);
+                        _container.ModelGraphSet.Remove(SelectedModelGraph);
+                        _container.ModelGraphSet.Add(vm.Model);
+                        _container.SaveChanges();
+                        Models.Insert(Models.IndexOf(SelectedModelGraph), vm.Model);
+                        Models.Remove(SelectedModelGraph);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Не удалось сохранить изменений в базе данных\n" + e.Message, "Ошибка", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                }
             }
         }
     }
 }
 
-    
+

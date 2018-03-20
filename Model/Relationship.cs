@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Relationship
+    public partial class Relationship : ICloneable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Relationship()
@@ -34,5 +34,9 @@ namespace Model
         public virtual ModelGraph ModelGraph { get; set; }
         public virtual Entity Entity1 { get; set; }
         public virtual Entity Entity2 { get; set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

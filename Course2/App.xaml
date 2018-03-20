@@ -4,9 +4,42 @@
              xmlns:local="clr-namespace:Course2"
              xmlns:converters="clr-namespace:WPFMVVMLib.Converters;assembly=WPFMVVMLib"
              xmlns:viewModels="clr-namespace:Course2.ViewModels"
+             xmlns:model="clr-namespace:Model;assembly=Model"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <viewModels:MainWindowViewModel x:Key="MainWindowViewModel"/>
         <converters:ObjectToBoolConverter x:Key="ObjectToBoolConverter"/>
+        <DataTemplate x:Key="AttributeTemplate" DataType="model:Attribute">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="EntityTemplate" DataType="model:Entity">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="RelationshipTemplate" DataType="model:Relationship">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ModelGraphTemplate" DataType="model:ModelGraph">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="TransformationModelTextTemplate" DataType="model:TransformationModelText">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="TransformationModelModelTemplate" DataType="model:TransformationModelModel">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="TransformationRuleModelTextTemplate" DataType="model:TransformationRuleModelText">
+            <TextBlock>
+                <Run Text="{Binding Initial.Name}"/>
+                <Run Text=" => "/>
+                <Run Text="{Binding Final}"/>
+            </TextBlock>
+        </DataTemplate>
+        <DataTemplate x:Key="TransformationRuleModelModelTemplate" DataType="model:TransformationRuleModelModel">
+            <TextBlock>
+                <Run Text="{Binding Initial.Name}"/>
+                <Run Text=" => "/>
+                <Run Text="{Binding Final.Name}"/>
+            </TextBlock>
+        </DataTemplate>
     </Application.Resources>
 </Application>

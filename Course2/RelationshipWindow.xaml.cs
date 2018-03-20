@@ -18,15 +18,18 @@ using WPFMVVMLib.Commands;
 namespace Course2
 {
     /// <summary>
-    /// Interaction logic for ModelWindow.xaml
+    /// Interaction logic for RelationshipWindow.xaml
     /// </summary>
-    public partial class ModelWindow : Window
+    public partial class RelationshipWindow : Window
     {
-        public ModelWindow(ModelGraph model)
+        public RelationshipWindow(Relationship relationship)
         {
             InitializeComponent();
-            var vm = new ModelWindowViewModel(model) { CloseCommand = new DelegateCommand(this.Close),
-                SetDialogResultCommand = new SimpleCommand<bool?>(SetDialogResult)};
+            var vm = new RelationshipWindowViewModel(relationship)
+            {
+                CloseCommand = new DelegateCommand(Close),
+                SetDialogResultCommand = new SimpleCommand<bool?>(SetDialogResult)
+            };
             DataContext = vm;
         }
 

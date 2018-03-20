@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Model;
 using WPFMVVMLib.Commands;
 
@@ -8,17 +9,20 @@ namespace Course2.ViewModels
     {
         public ModelWindowViewModel(ModelGraph model)
         {
-            Model = (ModelGraph)model.Clone();
-            Name = Model.Name;
-            Entities = new ObservableCollection<Entity>(Model.Entities);
-            Relationships = new ObservableCollection<Relationship>(Model.Relationships);
-            TransformationsModelText = new ObservableCollection<TransformationModelText>(Model.TransformationsModelText);
-            TransformationsModelModel = new ObservableCollection<TransformationModelModel>(Model.TransformationsModelModel);
+            Model = new ModelGraph();
+            Name = model.Name;
+            Entities = new ObservableCollection<Entity>(model.Entities);
+            Relationships = new ObservableCollection<Relationship>(model.Relationships);
+            TransformationsModelText = new ObservableCollection<TransformationModelText>(model.TransformationsModelText);
+            TransformationsModelModel = new ObservableCollection<TransformationModelModel>(model.TransformationsModelModel);
             AddEntityCommand = new DelegateCommand(AddEntity);
+            AddRelationshipCommand = new DelegateCommand(AddRelationship);
             DeleteEntityCommand = new DelegateCommand(DeleteEntity);
             DeleteRelationshipCommand = new DelegateCommand(DeleteRelationship);
             DeleteTransformationModelTextCommand = new DelegateCommand(DeleteTransformationModelText);
             DeleteTransformationModelModelCommand = new DelegateCommand(DeleteTransformationModelModel);
+            EditEntityCommand = new DelegateCommand(EditEntity);
+            EditRelationshipCommand = new DelegateCommand(EditRelationship);
             SaveCommand = new DelegateCommand(Save);
         }
 
@@ -44,8 +48,6 @@ namespace Course2.ViewModels
 
         public TransformationModelModel SelectedTransformationModelModel { get; set; }
 
-        public bool? DialogResult { get; set; }
-
         #endregion
 
         #region Commands
@@ -66,9 +68,19 @@ namespace Course2.ViewModels
 
         public DelegateCommand DeleteTransformationModelModelCommand { get; set; }
 
+        public DelegateCommand EditEntityCommand { get; set; }
+
+        public DelegateCommand EditRelationshipCommand { get; set; }
+
+        public DelegateCommand EditTransformationModelTextCommand { get; set; }
+
+        public DelegateCommand EditTransformationModelModelCommand { get; set; }
+
         public DelegateCommand CloseCommand { get; set; }
 
         public DelegateCommand SaveCommand { get; set; }
+
+        public SimpleCommand<bool?> SetDialogResultCommand { get; set; }
 
         #endregion
 
@@ -110,6 +122,49 @@ namespace Course2.ViewModels
             }
         }
 
+        private void EditEntity()
+        {
+            if(SelectedEntity == null) return;
+            var entityWindow = new EntityWindow(SelectedEntity);
+            var result = entityWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (entityWindow.DataContext is EntityWindowViewModel vm)
+                {
+                    Entities.Insert(Entities.IndexOf(SelectedEntity), vm.Entity);
+                    Entities.Remove(SelectedEntity);
+                }
+                    
+            }
+        }
+
+        private void AddRelationship()
+        {
+            var relationship = new Relationship();
+            var relationshipWindow = new RelationshipWindow(relationship);
+            var result = relationshipWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (relationshipWindow.DataContext is RelationshipWindowViewModel vm)
+                    Relationships.Add(vm.Relationship);
+            }
+        }
+
+        private void EditRelationship()
+        {
+            if(SelectedRelationship == null) return;
+            var relationshipWindow = new RelationshipWindow(SelectedRelationship);
+            var result = relationshipWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (relationshipWindow.DataContext is RelationshipWindowViewModel vm)
+                {
+                    Relationships.Insert(Relationships.IndexOf(SelectedRelationship), vm.Relationship);
+                    Relationships.Remove(SelectedRelationship);
+                }
+            }
+        }
+
         private void Save()
         {
             Model.Name = Name;
@@ -117,6 +172,7 @@ namespace Course2.ViewModels
             Model.Relationships = Relationships;
             Model.TransformationsModelModel = TransformationsModelModel;
             Model.TransformationsModelText = TransformationsModelText;
+            SetDialogResultCommand.Execute(true);
             CloseCommand.Execute(null);
         }
 

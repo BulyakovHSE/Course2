@@ -146,15 +146,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttributeWindow.xaml.cs">
+      <DependentUpon>AttributeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityWindow.xaml.cs">
       <DependentUpon>EntityWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelWindow.xaml.cs">
       <DependentUpon>ModelWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RelationshipWindow.xaml.cs">
+      <DependentUpon>RelationshipWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AttributeWindowViewModel.cs" />
     <Compile Include="ViewModels\EntityWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ModelWindowViewModel.cs" />
+    <Compile Include="ViewModels\RelationshipWindowViewModel.cs" />
+    <Page Include="AttributeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EntityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +184,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ModelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelationshipWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
