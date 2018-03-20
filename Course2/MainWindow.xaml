@@ -4,9 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Course2"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        xmlns:model1="clr-namespace:Model;assembly=Model"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        DataContext="{StaticResource MainWindowViewModel}"
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Content="Загрузить модели" Command="{Binding LoadModelsCommand}"/>
+            <Button Content="Создать новую модель" Command="{Binding CreateNewModelCommand}"/>
+            <ListBox ItemsSource="{Binding Models}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="model1:ModelGraph">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
     </Grid>
 </Window>

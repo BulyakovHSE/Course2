@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Vma.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="VmaStoreContainer">
+    <EntitySet Name="TransformationRuleModelModelSet" EntityType="Vma.Store.TransformationRuleModelModelSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransformationRuleModelTextSet" EntityType="Vma.Store.TransformationRuleModelTextSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransformationModelTextSet" EntityType="Vma.Store.TransformationModelTextSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransformationModelModelSet" EntityType="Vma.Store.TransformationModelModelSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AttributeSet" EntityType="Vma.Store.AttributeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RelationshipParentSet" EntityType="Vma.Store.RelationshipParentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ModelGraphParentSet" EntityType="Vma.Store.ModelGraphParentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ModelGraphSet" EntityType="Vma.Store.ModelGraphSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EntitySet" EntityType="Vma.Store.EntitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EntityParentSet" EntityType="Vma.Store.EntityParentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RelationshipSet" EntityType="Vma.Store.RelationshipSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TransformationModelModelTransformationRuleModelModel" Association="Vma.Store.TransformationModelModelTransformationRuleModelModel">
+      <End Role="TransformationModelModel" EntitySet="TransformationModelModelSet" />
+      <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+    </AssociationSet>
+    <AssociationSet Name="TransformationRuleModelModelEntity" Association="Vma.Store.TransformationRuleModelModelEntity">
+      <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="TransformationRuleModelModelEntity1" Association="Vma.Store.TransformationRuleModelModelEntity1">
+      <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="TransformationModelTextTransformationRuleModelText" Association="Vma.Store.TransformationModelTextTransformationRuleModelText">
+      <End Role="TransformationModelText" EntitySet="TransformationModelTextSet" />
+      <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
+    </AssociationSet>
+    <AssociationSet Name="TransformationRuleModelTextEntity" Association="Vma.Store.TransformationRuleModelTextEntity">
+      <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="EntityAttribute" Association="Vma.Store.EntityAttribute">
+      <End Role="Entity" EntitySet="EntitySet" />
+      <End Role="Attribute" EntitySet="AttributeSet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipAttribute" Association="Vma.Store.RelationshipAttribute">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="Attribute" EntitySet="AttributeSet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipRelationshipParent" Association="Vma.Store.RelationshipRelationshipParent">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="RelationshipParent" EntitySet="RelationshipParentSet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipRelationshipParent1" Association="Vma.Store.RelationshipRelationshipParent1">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="RelationshipParent" EntitySet="RelationshipParentSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphModelGraphParent" Association="Vma.Store.ModelGraphModelGraphParent">
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+      <End Role="ModelGraphParent" EntitySet="ModelGraphParentSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphParentModelGraph" Association="Vma.Store.ModelGraphParentModelGraph">
+      <End Role="ModelGraphParent" EntitySet="ModelGraphParentSet" />
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphTransformationModelText" Association="Vma.Store.ModelGraphTransformationModelText">
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+      <End Role="TransformationModelText" EntitySet="TransformationModelTextSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphTransformationModelModel" Association="Vma.Store.ModelGraphTransformationModelModel">
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+      <End Role="TransformationModelModel" EntitySet="TransformationModelModelSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphEntity" Association="Vma.Store.ModelGraphEntity">
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="EntityEntityParent" Association="Vma.Store.EntityEntityParent">
+      <End Role="Entity" EntitySet="EntitySet" />
+      <End Role="EntityParent" EntitySet="EntityParentSet" />
+    </AssociationSet>
+    <AssociationSet Name="EntityParentEntity" Association="Vma.Store.EntityParentEntity">
+      <End Role="EntityParent" EntitySet="EntityParentSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelGraphRelationship" Association="Vma.Store.ModelGraphRelationship">
+      <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipEntity" Association="Vma.Store.RelationshipEntity">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipEntity1" Association="Vma.Store.RelationshipEntity1">
+      <End Role="Relationship" EntitySet="RelationshipSet" />
+      <End Role="Entity" EntitySet="EntitySet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TransformationRuleModelModelSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransformationModelModelId" Type="int" Nullable="false" />
+    <Property Name="Initial_Id" Type="int" Nullable="false" />
+    <Property Name="Final_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransformationRuleModelTextSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Final" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TransformationModelTextId" Type="int" Nullable="false" />
+    <Property Name="Initial_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransformationModelTextSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ModelGraphId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransformationModelModelSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ModelGraphId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AttributeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DefaultValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="RelationshipId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RelationshipParentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Relationship_Id" Type="int" Nullable="false" />
+    <Property Name="Parent_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModelGraphParentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelGraph_Id" Type="int" Nullable="false" />
+    <Property Name="Parent_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModelGraphSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InstanceCount" Type="int" Nullable="false" />
+    <Property Name="NameUniqueFlag" Type="int" Nullable="false" />
+    <Property Name="ModelGraphId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntityParentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entity_Id" Type="int" Nullable="false" />
+    <Property Name="Parent_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RelationshipSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Multiplicity1" Type="int" Nullable="false" />
+    <Property Name="Multiplicity2" Type="int" Nullable="false" />
+    <Property Name="NameUniqueFlag" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="ModelGraphId" Type="int" Nullable="false" />
+    <Property Name="Entity1_Id" Type="int" Nullable="false" />
+    <Property Name="Entity2_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TransformationModelModelTransformationRuleModelModel">
+    <End Role="TransformationModelModel" Type="Vma.Store.TransformationModelModelSet" Multiplicity="1" />
+    <End Role="TransformationRuleModelModel" Type="Vma.Store.TransformationRuleModelModelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransformationModelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationRuleModelModel">
+        <PropertyRef Name="TransformationModelModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransformationRuleModelModelEntity">
+    <End Role="TransformationRuleModelModel" Type="Vma.Store.TransformationRuleModelModelSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationRuleModelModel">
+        <PropertyRef Name="Initial_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransformationRuleModelModelEntity1">
+    <End Role="TransformationRuleModelModel" Type="Vma.Store.TransformationRuleModelModelSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationRuleModelModel">
+        <PropertyRef Name="Final_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransformationModelTextTransformationRuleModelText">
+    <End Role="TransformationModelText" Type="Vma.Store.TransformationModelTextSet" Multiplicity="1" />
+    <End Role="TransformationRuleModelText" Type="Vma.Store.TransformationRuleModelTextSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransformationModelText">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationRuleModelText">
+        <PropertyRef Name="TransformationModelTextId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransformationRuleModelTextEntity">
+    <End Role="TransformationRuleModelText" Type="Vma.Store.TransformationRuleModelTextSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationRuleModelText">
+        <PropertyRef Name="Initial_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EntityAttribute">
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attribute">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationshipAttribute">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="1" />
+    <End Role="Attribute" Type="Vma.Store.AttributeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relationship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attribute">
+        <PropertyRef Name="RelationshipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationshipRelationshipParent">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="1" />
+    <End Role="RelationshipParent" Type="Vma.Store.RelationshipParentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relationship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RelationshipParent">
+        <PropertyRef Name="Relationship_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationshipRelationshipParent1">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="1" />
+    <End Role="RelationshipParent" Type="Vma.Store.RelationshipParentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relationship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RelationshipParent">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphModelGraphParent">
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <End Role="ModelGraphParent" Type="Vma.Store.ModelGraphParentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ModelGraphParent">
+        <PropertyRef Name="ModelGraph_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphParentModelGraph">
+    <End Role="ModelGraphParent" Type="Vma.Store.ModelGraphParentSet" Multiplicity="*" />
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ModelGraphParent">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphTransformationModelText">
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <End Role="TransformationModelText" Type="Vma.Store.TransformationModelTextSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationModelText">
+        <PropertyRef Name="ModelGraphId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphTransformationModelModel">
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <End Role="TransformationModelModel" Type="Vma.Store.TransformationModelModelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransformationModelModel">
+        <PropertyRef Name="ModelGraphId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphEntity">
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="ModelGraphId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EntityEntityParent">
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <End Role="EntityParent" Type="Vma.Store.EntityParentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityParent">
+        <PropertyRef Name="Entity_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EntityParentEntity">
+    <End Role="EntityParent" Type="Vma.Store.EntityParentSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntityParent">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelGraphRelationship">
+    <End Role="ModelGraph" Type="Vma.Store.ModelGraphSet" Multiplicity="1" />
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelGraph">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Relationship">
+        <PropertyRef Name="ModelGraphId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationshipEntity">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Relationship">
+        <PropertyRef Name="Entity1_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationshipEntity1">
+    <End Role="Relationship" Type="Vma.Store.RelationshipSet" Multiplicity="*" />
+    <End Role="Entity" Type="Vma.Store.EntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Relationship">
+        <PropertyRef Name="Entity2_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Vma" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="VmaContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TransformationRuleModelModelSet" EntityType="Vma.TransformationRuleModelModel" />
+          <EntitySet Name="TransformationRuleModelTextSet" EntityType="Vma.TransformationRuleModelText" />
+          <EntitySet Name="TransformationModelTextSet" EntityType="Vma.TransformationModelText" />
+          <EntitySet Name="TransformationModelModelSet" EntityType="Vma.TransformationModelModel" />
+          <EntitySet Name="AttributeSet" EntityType="Vma.Attribute" />
+          <EntitySet Name="RelationshipParentSet" EntityType="Vma.RelationshipParent" />
+          <EntitySet Name="ModelGraphParentSet" EntityType="Vma.ModelGraphParent" />
+          <EntitySet Name="ModelGraphSet" EntityType="Vma.ModelGraph" />
+          <EntitySet Name="EntitySet" EntityType="Vma.Entity" />
+          <EntitySet Name="EntityParentSet" EntityType="Vma.EntityParent" />
+          <EntitySet Name="RelationshipSet" EntityType="Vma.Relationship" />
+          <AssociationSet Name="TransformationModelModelTransformationRuleModelModel" Association="Vma.TransformationModelModelTransformationRuleModelModel">
+            <End Role="TransformationModelModel" EntitySet="TransformationModelModelSet" />
+            <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+          </AssociationSet>
+          <AssociationSet Name="TransformationRuleModelModelEntity" Association="Vma.TransformationRuleModelModelEntity">
+            <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="TransformationRuleModelModelEntity1" Association="Vma.TransformationRuleModelModelEntity1">
+            <End Role="TransformationRuleModelModel" EntitySet="TransformationRuleModelModelSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="TransformationModelTextTransformationRuleModelText" Association="Vma.TransformationModelTextTransformationRuleModelText">
+            <End Role="TransformationModelText" EntitySet="TransformationModelTextSet" />
+            <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
+          </AssociationSet>
+          <AssociationSet Name="TransformationRuleModelTextEntity" Association="Vma.TransformationRuleModelTextEntity">
+            <End Role="TransformationRuleModelText" EntitySet="TransformationRuleModelTextSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="EntityAttribute" Association="Vma.EntityAttribute">
+            <End Role="Entity" EntitySet="EntitySet" />
+            <End Role="Attribute" EntitySet="AttributeSet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipAttribute" Association="Vma.RelationshipAttribute">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="Attribute" EntitySet="AttributeSet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipRelationshipParent" Association="Vma.RelationshipRelationshipParent">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="RelationshipParent" EntitySet="RelationshipParentSet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipRelationshipParent1" Association="Vma.RelationshipRelationshipParent1">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="RelationshipParent" EntitySet="RelationshipParentSet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphModelGraphParent" Association="Vma.ModelGraphModelGraphParent">
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+            <End Role="ModelGraphParent" EntitySet="ModelGraphParentSet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphParentModelGraph" Association="Vma.ModelGraphParentModelGraph">
+            <End Role="ModelGraphParent" EntitySet="ModelGraphParentSet" />
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphTransformationModelText" Association="Vma.ModelGraphTransformationModelText">
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+            <End Role="TransformationModelText" EntitySet="TransformationModelTextSet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphTransformationModelModel" Association="Vma.ModelGraphTransformationModelModel">
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+            <End Role="TransformationModelModel" EntitySet="TransformationModelModelSet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphEntity" Association="Vma.ModelGraphEntity">
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="EntityEntityParent" Association="Vma.EntityEntityParent">
+            <End Role="Entity" EntitySet="EntitySet" />
+            <End Role="EntityParent" EntitySet="EntityParentSet" />
+          </AssociationSet>
+          <AssociationSet Name="EntityParentEntity" Association="Vma.EntityParentEntity">
+            <End Role="EntityParent" EntitySet="EntityParentSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="ModelGraphRelationship" Association="Vma.ModelGraphRelationship">
+            <End Role="ModelGraph" EntitySet="ModelGraphSet" />
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipEntity" Association="Vma.RelationshipEntity">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipEntity1" Association="Vma.RelationshipEntity1">
+            <End Role="Relationship" EntitySet="RelationshipSet" />
+            <End Role="Entity" EntitySet="EntitySet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TransformationRuleModelModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransformationModelModelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransformationModelModel" Relationship="Vma.TransformationModelModelTransformationRuleModelModel" FromRole="TransformationRuleModelModel" ToRole="TransformationModelModel" />
+          <NavigationProperty Name="Initial" Relationship="Vma.TransformationRuleModelModelEntity" FromRole="TransformationRuleModelModel" ToRole="Entity" />
+          <NavigationProperty Name="Final" Relationship="Vma.TransformationRuleModelModelEntity1" FromRole="TransformationRuleModelModel" ToRole="Entity" />
+        </EntityType>
+        <EntityType Name="TransformationRuleModelText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Final" Type="String" Nullable="false" />
+          <Property Name="TransformationModelTextId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransformationModelText" Relationship="Vma.TransformationModelTextTransformationRuleModelText" FromRole="TransformationRuleModelText" ToRole="TransformationModelText" />
+          <NavigationProperty Name="Initial" Relationship="Vma.TransformationRuleModelTextEntity" FromRole="TransformationRuleModelText" ToRole="Entity" />
+        </EntityType>
+        <EntityType Name="TransformationModelText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ModelGraphId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransformationRules" Relationship="Vma.TransformationModelTextTransformationRuleModelText" FromRole="TransformationModelText" ToRole="TransformationRuleModelText" />
+          <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphTransformationModelText" FromRole="TransformationModelText" ToRole="ModelGraph" />
+        </EntityType>
+        <EntityType Name="TransformationModelModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ModelGraphId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransformationRules" Relationship="Vma.TransformationModelModelTransformationRuleModelModel" FromRole="TransformationModelModel" ToRole="TransformationRuleModelModel" />
+          <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphTransformationModelModel" FromRole="TransformationModelModel" ToRole="ModelGraph" />
+        </EntityType>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="DefaultValue" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entity" Relationship="Vma.EntityAttribute" FromRole="Attribute" ToRole="Entity" />
+          <NavigationProperty Name="Relationship" Relationship="Vma.RelationshipAttribute" FromRole="Attribute" ToRole="Relationship" />
+        </EntityType>
+        <EntityType Name="RelationshipParent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Relationship" Relationship="Vma.RelationshipRelationshipParent" FromRole="RelationshipParent" ToRole="Relationship" />
+          <NavigationProperty Name="Parent" Relationship="Vma.RelationshipRelationshipParent1" FromRole="RelationshipParent" ToRole="Relationship" />
+        </EntityType>
+        <EntityType Name="ModelGraphParent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphModelGraphParent" FromRole="ModelGraphParent" ToRole="ModelGraph" />
+          <NavigationProperty Name="Parent" Relationship="Vma.ModelGraphParentModelGraph" FromRole="ModelGraphParent" ToRole="ModelGraph" />
+        </EntityType>
+        <EntityType Name="ModelGraph">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="ModelGraphParent" Relationship="Vma.ModelGraphModelGraphParent" FromRole="ModelGraph" ToRole="ModelGraphParent" />
+          <NavigationProperty Name="ModelGraphParent1" Relationship="Vma.ModelGraphParentModelGraph" FromRole="ModelGraph" ToRole="ModelGraphParent" />
+          <NavigationProperty Name="TransformationsModelText" Relationship="Vma.ModelGraphTransformationModelText" FromRole="ModelGraph" ToRole="TransformationModelText" />
+          <NavigationProperty Name="TransformationsModelModel" Relationship="Vma.ModelGraphTransformationModelModel" FromRole="ModelGraph" ToRole="TransformationModelModel" />
+          <NavigationProperty Name="Entities" Relationship="Vma.ModelGraphEntity" FromRole="ModelGraph" ToRole="Entity" />
+          <NavigationProperty Name="Relationships" Relationship="Vma.ModelGraphRelationship" FromRole="ModelGraph" ToRole="Relationship" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="InstanceCount" Type="Int32" Nullable="false" />
+          <Property Name="NameUniqueFlag" Type="Vma.NameUniqueType" Nullable="false" />
+          <Property Name="ModelGraphId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransformationRuleModelModel" Relationship="Vma.TransformationRuleModelModelEntity" FromRole="Entity" ToRole="TransformationRuleModelModel" />
+          <NavigationProperty Name="TransformationRuleModelModel1" Relationship="Vma.TransformationRuleModelModelEntity1" FromRole="Entity" ToRole="TransformationRuleModelModel" />
+          <NavigationProperty Name="TransformationRuleModelText" Relationship="Vma.TransformationRuleModelTextEntity" FromRole="Entity" ToRole="TransformationRuleModelText" />
+          <NavigationProperty Name="Attributes" Relationship="Vma.EntityAttribute" FromRole="Entity" ToRole="Attribute" />
+          <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphEntity" FromRole="Entity" ToRole="ModelGraph" />
+          <NavigationProperty Name="EntityParent" Relationship="Vma.EntityEntityParent" FromRole="Entity" ToRole="EntityParent" />
+          <NavigationProperty Name="EntityParent1" Relationship="Vma.EntityParentEntity" FromRole="Entity" ToRole="EntityParent" />
+        </EntityType>
+        <EntityType Name="EntityParent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Entity" Relationship="Vma.EntityEntityParent" FromRole="EntityParent" ToRole="Entity" />
+          <NavigationProperty Name="Parent" Relationship="Vma.EntityParentEntity" FromRole="EntityParent" ToRole="Entity" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Multiplicity1" Type="Int32" Nullable="false" />
+          <Property Name="Multiplicity2" Type="Int32" Nullable="false" />
+          <Property Name="NameUniqueFlag" Type="Vma.NameUniqueType" Nullable="false" />
+          <Property Name="Type" Type="Vma.RelationshipType" Nullable="false" />
+          <Property Name="ModelGraphId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attributes" Relationship="Vma.RelationshipAttribute" FromRole="Relationship" ToRole="Attribute" />
+          <NavigationProperty Name="RelationshipParent" Relationship="Vma.RelationshipRelationshipParent" FromRole="Relationship" ToRole="RelationshipParent" />
+          <NavigationProperty Name="ModelGraph" Relationship="Vma.ModelGraphRelationship" FromRole="Relationship" ToRole="ModelGraph" />
+          <NavigationProperty Name="Entity1" Relationship="Vma.RelationshipEntity" FromRole="Relationship" ToRole="Entity" />
+          <NavigationProperty Name="Entity2" Relationship="Vma.RelationshipEntity1" FromRole="Relationship" ToRole="Entity" />
+        </EntityType>
+        <Association Name="TransformationModelModelTransformationRuleModelModel">
+          <End Type="Vma.TransformationModelModel" Role="TransformationModelModel" Multiplicity="1" />
+          <End Type="Vma.TransformationRuleModelModel" Role="TransformationRuleModelModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransformationModelModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransformationRuleModelModel">
+              <PropertyRef Name="TransformationModelModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TransformationRuleModelModelEntity">
+          <End Type="Vma.TransformationRuleModelModel" Role="TransformationRuleModelModel" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="TransformationRuleModelModelEntity1">
+          <End Type="Vma.TransformationRuleModelModel" Role="TransformationRuleModelModel" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="TransformationModelTextTransformationRuleModelText">
+          <End Type="Vma.TransformationModelText" Role="TransformationModelText" Multiplicity="1" />
+          <End Type="Vma.TransformationRuleModelText" Role="TransformationRuleModelText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransformationModelText">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransformationRuleModelText">
+              <PropertyRef Name="TransformationModelTextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TransformationRuleModelTextEntity">
+          <End Type="Vma.TransformationRuleModelText" Role="TransformationRuleModelText" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="EntityAttribute">
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attribute">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipAttribute">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="Vma.Attribute" Role="Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attribute">
+              <PropertyRef Name="RelationshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipRelationshipParent">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="Vma.RelationshipParent" Role="RelationshipParent" Multiplicity="0..1" />
+        </Association>
+        <Association Name="RelationshipRelationshipParent1">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="1" />
+          <End Type="Vma.RelationshipParent" Role="RelationshipParent" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ModelGraphModelGraphParent">
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+          <End Type="Vma.ModelGraphParent" Role="ModelGraphParent" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ModelGraphParentModelGraph">
+          <End Type="Vma.ModelGraphParent" Role="ModelGraphParent" Multiplicity="0..1" />
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+        </Association>
+        <Association Name="ModelGraphTransformationModelText">
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+          <End Type="Vma.TransformationModelText" Role="TransformationModelText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelGraph">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransformationModelText">
+              <PropertyRef Name="ModelGraphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ModelGraphTransformationModelModel">
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+          <End Type="Vma.TransformationModelModel" Role="TransformationModelModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelGraph">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransformationModelModel">
+              <PropertyRef Name="ModelGraphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ModelGraphEntity">
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelGraph">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entity">
+              <PropertyRef Name="ModelGraphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EntityEntityParent">
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+          <End Type="Vma.EntityParent" Role="EntityParent" Multiplicity="0..1" />
+        </Association>
+        <Association Name="EntityParentEntity">
+          <End Type="Vma.EntityParent" Role="EntityParent" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="ModelGraphRelationship">
+          <End Type="Vma.ModelGraph" Role="ModelGraph" Multiplicity="1" />
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelGraph">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relationship">
+              <PropertyRef Name="ModelGraphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="NameUniqueType">
+          <Member Name="UniqueInModel" />
+          <Member Name="UniqueInMetaModel" />
+          <Member Name="NotUnique" />
+        </EnumType>
+        <EnumType Name="RelationshipType">
+          <Member Name="Inheritance" />
+          <Member Name="Association" />
+          <Member Name="Aggregation" />
+        </EnumType>
+        <Association Name="RelationshipEntity">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+        <Association Name="RelationshipEntity1">
+          <End Type="Vma.Relationship" Role="Relationship" Multiplicity="0..1" />
+          <End Type="Vma.Entity" Role="Entity" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VmaStoreContainer" CdmEntityContainer="VmaContainer">
+    <EntitySetMapping Name="TransformationRuleModelModelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.TransformationRuleModelModel)">
+        <MappingFragment StoreEntitySet="TransformationRuleModelModelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TransformationModelModelId" ColumnName="TransformationModelModelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransformationRuleModelTextSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.TransformationRuleModelText)">
+        <MappingFragment StoreEntitySet="TransformationRuleModelTextSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Final" ColumnName="Final" />
+          <ScalarProperty Name="TransformationModelTextId" ColumnName="TransformationModelTextId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransformationModelTextSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.TransformationModelText)">
+        <MappingFragment StoreEntitySet="TransformationModelTextSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ModelGraphId" ColumnName="ModelGraphId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransformationModelModelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.TransformationModelModel)">
+        <MappingFragment StoreEntitySet="TransformationModelModelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ModelGraphId" ColumnName="ModelGraphId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AttributeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.Attribute)">
+        <MappingFragment StoreEntitySet="AttributeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="RelationshipId" ColumnName="RelationshipId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelationshipParentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.RelationshipParent)">
+        <MappingFragment StoreEntitySet="RelationshipParentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModelGraphParentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.ModelGraphParent)">
+        <MappingFragment StoreEntitySet="ModelGraphParentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModelGraphSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.ModelGraph)">
+        <MappingFragment StoreEntitySet="ModelGraphSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.Entity)">
+        <MappingFragment StoreEntitySet="EntitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InstanceCount" ColumnName="InstanceCount" />
+          <ScalarProperty Name="NameUniqueFlag" ColumnName="NameUniqueFlag" />
+          <ScalarProperty Name="ModelGraphId" ColumnName="ModelGraphId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityParentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.EntityParent)">
+        <MappingFragment StoreEntitySet="EntityParentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelationshipSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Vma.Relationship)">
+        <MappingFragment StoreEntitySet="RelationshipSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Multiplicity1" ColumnName="Multiplicity1" />
+          <ScalarProperty Name="Multiplicity2" ColumnName="Multiplicity2" />
+          <ScalarProperty Name="NameUniqueFlag" ColumnName="NameUniqueFlag" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ModelGraphId" ColumnName="ModelGraphId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TransformationRuleModelModelEntity" TypeName="Vma.TransformationRuleModelModelEntity" StoreEntitySet="TransformationRuleModelModelSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Initial_Id" />
+      </EndProperty>
+      <EndProperty Name="TransformationRuleModelModel">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TransformationRuleModelModelEntity1" TypeName="Vma.TransformationRuleModelModelEntity1" StoreEntitySet="TransformationRuleModelModelSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Final_Id" />
+      </EndProperty>
+      <EndProperty Name="TransformationRuleModelModel">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TransformationRuleModelTextEntity" TypeName="Vma.TransformationRuleModelTextEntity" StoreEntitySet="TransformationRuleModelTextSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Initial_Id" />
+      </EndProperty>
+      <EndProperty Name="TransformationRuleModelText">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationshipRelationshipParent" TypeName="Vma.RelationshipRelationshipParent" StoreEntitySet="RelationshipParentSet">
+      <EndProperty Name="Relationship">
+        <ScalarProperty Name="Id" ColumnName="Relationship_Id" />
+      </EndProperty>
+      <EndProperty Name="RelationshipParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationshipRelationshipParent1" TypeName="Vma.RelationshipRelationshipParent1" StoreEntitySet="RelationshipParentSet">
+      <EndProperty Name="Relationship">
+        <ScalarProperty Name="Id" ColumnName="Parent_Id" />
+      </EndProperty>
+      <EndProperty Name="RelationshipParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ModelGraphModelGraphParent" TypeName="Vma.ModelGraphModelGraphParent" StoreEntitySet="ModelGraphParentSet">
+      <EndProperty Name="ModelGraph">
+        <ScalarProperty Name="Id" ColumnName="ModelGraph_Id" />
+      </EndProperty>
+      <EndProperty Name="ModelGraphParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ModelGraphParentModelGraph" TypeName="Vma.ModelGraphParentModelGraph" StoreEntitySet="ModelGraphParentSet">
+      <EndProperty Name="ModelGraph">
+        <ScalarProperty Name="Id" ColumnName="Parent_Id" />
+      </EndProperty>
+      <EndProperty Name="ModelGraphParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EntityEntityParent" TypeName="Vma.EntityEntityParent" StoreEntitySet="EntityParentSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Entity_Id" />
+      </EndProperty>
+      <EndProperty Name="EntityParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EntityParentEntity" TypeName="Vma.EntityParentEntity" StoreEntitySet="EntityParentSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Parent_Id" />
+      </EndProperty>
+      <EndProperty Name="EntityParent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationshipEntity" TypeName="Vma.RelationshipEntity" StoreEntitySet="RelationshipSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Entity1_Id" />
+      </EndProperty>
+      <EndProperty Name="Relationship">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationshipEntity1" TypeName="Vma.RelationshipEntity1" StoreEntitySet="RelationshipSet">
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Entity2_Id" />
+      </EndProperty>
+      <EndProperty Name="Relationship">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
