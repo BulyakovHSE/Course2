@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.VmaContainer">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEgAAgRAAAAAAAAAAAAEAAAEQAAAAAAABQAIAAAAAI=</HashCode>
+      <FileName>Vma.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Attribute">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAIgAAAAAAAAAAQAAABAAAAAAQAgAAAIAAA=</HashCode>
+      <FileName>Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Entity">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAgAAAAIAABFACAAAAQQAAAAEAAAAAAAAAAABAA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.EntityParent">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.ModelGraph">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQACAAAAAAAAAAAAAAAAAAQAAAAAADAAAAEAAAIAAAA=</HashCode>
+      <FileName>ModelGraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.ModelGraphParent">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelGraphParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Relationship">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAIAACVAAAAAAQQAAAAAAAAAQAAAAAkAAA=</HashCode>
+      <FileName>Relationship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.RelationshipParent">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>RelationshipParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.TransformationModelModel">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIAAAEAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>TransformationModelModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.TransformationModelText">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIAAAEAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>TransformationModelText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.TransformationRuleModelModel">
+    <Position X="2.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAI=</HashCode>
+      <FileName>TransformationRuleModelModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.TransformationRuleModelText">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAgAAAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>TransformationRuleModelText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Model.NameUniqueType">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>NameUniqueType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.RelationshipType">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAQA=</HashCode>
+      <FileName>RelationshipType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
