@@ -37,60 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Avalonia.Animation, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Animation.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Base, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Controls, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.DesignerSupport, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.DesignerSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Diagnostics, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.DotNetFrameworkRuntime, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.DotNetFrameworkRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Input, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Interactivity, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Layout, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Layout.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Logging.Serilog, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Logging.Serilog.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Markup, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Markup.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Markup.Xaml, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Markup.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Remote.Protocol, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.Remote.Protocol.0.6.0\lib\netstandard2.0\Avalonia.Remote.Protocol.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Styling, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Styling.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Themes.Default, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Themes.Default.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Visuals, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.0.6.0\lib\net45\Avalonia.Visuals.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Xaml.Interactions, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.Xaml.Interactions.0.6.0\lib\net461\Avalonia.Xaml.Interactions.dll</HintPath>
-    </Reference>
-    <Reference Include="Avalonia.Xaml.Interactivity, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalonia.Xaml.Interactivity.0.6.0\lib\net461\Avalonia.Xaml.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>

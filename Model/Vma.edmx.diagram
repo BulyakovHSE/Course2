@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="355bfc43852e4ec68f6c5b0372b40511" Name="Diagram1" ZoomLevel="86" >
-        <EntityTypeShape EntityType="Vma.TransformationRuleModelModel" Width="1.5" PointX="5.25" PointY="5.875" />
-        <EntityTypeShape EntityType="Vma.TransformationRuleModelText" Width="1.5" PointX="5.25" PointY="3.125" />
+      <Diagram DiagramId="355bfc43852e4ec68f6c5b0372b40511" Name="Diagram1" ZoomLevel="111" >
+        <EntityTypeShape EntityType="Vma.TransformationRuleModelModel" Width="1.5" PointX="4.875" PointY="5.25" />
+        <EntityTypeShape EntityType="Vma.TransformationRuleModelText" Width="1.5" PointX="4.875" PointY="3.125" />
         <EntityTypeShape EntityType="Vma.TransformationModelText" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="Vma.TransformationModelModel" Width="1.5" PointX="3" PointY="5.875" />
-        <EntityTypeShape EntityType="Vma.Attribute" Width="1.5" PointX="9.75" PointY="4.875" />
-        <EntityTypeShape EntityType="Vma.RelationshipParent" Width="1.5" PointX="5.25" PointY="11.625" />
-        <EntityTypeShape EntityType="Vma.ModelGraphParent" Width="1.5" PointX="3" PointY="8.625" />
-        <EntityTypeShape EntityType="Vma.ModelGraph" Width="1.5" PointX="0.75" PointY="7.25" />
-        <EntityTypeShape EntityType="Vma.Entity" Width="1.5" PointX="7.5" PointY="4.875" />
-        <EntityTypeShape EntityType="Vma.EntityParent" Width="1.5" PointX="9.75" PointY="9.375" />
-        <EntityTypeShape EntityType="Vma.Relationship" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="Vma.TransformationModelModel" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="Vma.Attribute" Width="1.5" PointX="9" PointY="4.875" />
+        <EntityTypeShape EntityType="Vma.RelationshipParent" Width="1.5" PointX="2.625" PointY="10.25" />
+        <EntityTypeShape EntityType="Vma.ModelGraphParent" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="Vma.ModelGraph" Width="1.5" PointX="1" PointY="4.75" />
+        <EntityTypeShape EntityType="Vma.Entity" Width="1.5" PointX="7.125" PointY="4.625" />
+        <EntityTypeShape EntityType="Vma.EntityParent" Width="1.5" PointX="4.875" PointY="7.75" />
+        <EntityTypeShape EntityType="Vma.Relationship" Width="1.5" PointX="0.5" PointY="7.75" />
         <AssociationConnector Association="Vma.TransformationModelModelTransformationRuleModelModel" />
         <AssociationConnector Association="Vma.TransformationRuleModelModelEntity" />
         <AssociationConnector Association="Vma.TransformationRuleModelModelEntity1" />
