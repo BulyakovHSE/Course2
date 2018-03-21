@@ -34,6 +34,8 @@ namespace Course2.ViewModels
             DeleteAttributeCommand = new DelegateCommand(DeleteAttribute);
         }
 
+        public bool IsValid => !string.IsNullOrEmpty(Name) && Entity1 != null && Entity2 != null;
+
         public string Name { get; set; }
 
         public int Multiplicity1 { get; set; }

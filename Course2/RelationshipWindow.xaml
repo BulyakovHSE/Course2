@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Имя"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock Text="Кратность 1: "/>
@@ -53,9 +53,9 @@
             <ListBox Grid.Row="1" ItemsSource="{Binding Attributes}" SelectionMode="Single" 
                      SelectedItem="{Binding SelectedAttribute}" ItemTemplate="{StaticResource AttributeTemplate}"/>
         </Grid>
-        <StackPanel Grid.Row="8" Orientation="Vertical">
-            <Button Command="{Binding SaveCommand}" Content="Сохранить" Margin="5"/>
-            <Button Command="{Binding CloseCommand}" Content="Отмена" Margin="5"/>
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding SaveCommand}" Content="Сохранить" Margin="5" IsDefault="True" IsEnabled="{Binding IsValid}"/>
+            <Button Command="{Binding CloseCommand}" Content="Отмена" Margin="5" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>

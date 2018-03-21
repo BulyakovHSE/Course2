@@ -38,8 +38,8 @@
             <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Orientation="Vertical">
-            <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="5" IsEnabled="{Binding IsValid}"/>
-            <Button Content="Отмена" Command="{Binding CloseCommand}" Margin="5"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="5" IsDefault="True" IsEnabled="{Binding IsValid}"/>
+            <Button Content="Отмена" Command="{Binding CloseCommand}" Margin="5" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>

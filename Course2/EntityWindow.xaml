@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Margin="5">
             <TextBlock Text="Имя сущности: "/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
             <TextBlock Text="Количество экземпляров сущности: "/>
@@ -45,7 +45,7 @@
                      SelectedItem="{Binding SelectedAttribute}" ItemTemplate="{StaticResource AttributeTemplate}"/>
         </Grid>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Сохранить" Margin="5" Command="{Binding SaveCommand}" IsDefault="True"/>
+            <Button Content="Сохранить" Margin="5" Command="{Binding SaveCommand}" IsDefault="True" IsEnabled="{Binding IsValid}"/>
             <Button Content="Отмена" Margin="5" Command="{Binding CloseCommand}" IsCancel="True"/>
         </StackPanel>
     </Grid>

@@ -87,7 +87,7 @@ namespace Course2.ViewModels
                         //_container.ModelGraphSet.Add(vm.Model);
                         var model = _container.ModelGraphSet.First(x => x.Id == SelectedModelGraph.Id);
                         model.Name = m.Name;
-                        SynchronizeEntities(model.Entities, m.Entities);
+                        SynchronizeEntities(model, m.Entities);
                         //model.Relationships = m.Relationships;
                         //model.TransformationsModelModel = m.TransformationsModelModel;
                         //model.TransformationsModelText = m.TransformationsModelText;
@@ -104,15 +104,16 @@ namespace Course2.ViewModels
             }
         }
 
-        private void SynchronizeAttributes(ICollection<Attribute> attributes,
+        private void SynchronizeAttributes(Entity entity,
             ICollection<Attribute> synchronizeWith)
         {
             var findedIds = new List<int>();
+            findedIds.Add(0);
             foreach (var attribute in synchronizeWith.ToList())
             {
-                if (attributes.Any(x => x.Id == attribute.Id))
+                if (entity.Attributes.Any(x => x.Id == attribute.Id))
                 {
-                    var atr = attributes.First(x => x.Id == attribute.Id);
+                    var atr = entity.Attributes.First(x => x.Id == attribute.Id);
                     atr.DefaultValue = attribute.DefaultValue;
                     atr.Description = attribute.Description;
                     atr.Value = attribute.Value;
@@ -122,26 +123,27 @@ namespace Course2.ViewModels
                 }
                 else
                 {
-                    attributes.Add(attribute);
+                    entity.Attributes.Add(attribute);
                 }
             }
 
-            var attributesToDelete = attributes.Where(x => !findedIds.Contains(x.Id)).ToList();
+            var attributesToDelete = entity.Attributes.Where(x => !findedIds.Contains(x.Id)).ToList();
             foreach (var attribute in attributesToDelete)
             {
-                attributes.Remove(attribute);
+                entity.Attributes.Remove(attribute);
             }
         }
 
-        private void SynchronizeEntities(ICollection<Entity> entities, ICollection<Entity> synchronizeWith)
+        private void SynchronizeEntities(ModelGraph model, ICollection<Entity> synchronizeWith)
         {
             var findedIds = new List<int>();
+            findedIds.Add(0);
             foreach (var entity in synchronizeWith.ToList())
             {
-                if (entities.Any(x => x.Id == entity.Id))
+                if (model.Entities.Any(x => x.Id == entity.Id))
                 {
-                    var ent = entities.First(x => x.Id == entity.Id);
-                    SynchronizeAttributes(ent.Attributes, entity.Attributes);
+                    var ent = model.Entities.First(x => x.Id == entity.Id);
+                    SynchronizeAttributes(ent, entity.Attributes);
                     ent.InstanceCount = entity.InstanceCount;
                     ent.Name = entity.Name;
                     ent.NameUniqueFlag = entity.NameUniqueFlag;
@@ -149,14 +151,14 @@ namespace Course2.ViewModels
                 }
                 else
                 {
-                    entities.Add(entity);
+                    model.Entities.Add(entity);
                 }
             }
 
-            var entitiesToDelete = entities.Where(x => !findedIds.Contains(x.Id)).ToList();
+            var entitiesToDelete = model.Entities.Where(x => !findedIds.Contains(x.Id)).ToList();
             foreach (var entity in entitiesToDelete)
             {
-                entities.Remove(entity);
+                model.Entities.Remove(entity);
             }
         }
     }

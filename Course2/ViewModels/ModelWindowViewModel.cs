@@ -28,6 +28,8 @@ namespace Course2.ViewModels
 
         #region Properties
 
+        public bool IsValid => !string.IsNullOrEmpty(Name);
+
         public ModelGraph Model { get; set; }
 
         public string Name { get; set; }

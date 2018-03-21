@@ -28,6 +28,8 @@ namespace Course2.ViewModels
             SaveCommand = new DelegateCommand(Save);
         }
 
+        public bool IsValid => !string.IsNullOrEmpty(Name);
+
         public Entity Entity { get; set; }
 
         public string Name { get;set; }
@@ -56,7 +58,7 @@ namespace Course2.ViewModels
 
         private void AddAttribute()
         {
-            var attribute = new Attribute();
+            var attribute = new Attribute{EntityId = Entity.Id};
             var attributeWindow = new AttributeWindow(attribute);
             var result = attributeWindow.ShowDialog();
             if (result.HasValue && result.Value)
