@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using Model;
+using WPFMVVMLib;
 using WPFMVVMLib.Commands;
 
 namespace Course2.ViewModels
 {
-    public class ModelWindowViewModel
+    public class ModelWindowViewModel : ViewModelBase
     {
         public ModelWindowViewModel(ModelGraph model)
         {
@@ -17,12 +18,16 @@ namespace Course2.ViewModels
             TransformationsModelModel = new ObservableCollection<TransformationModelModel>(model.TransformationsModelModel);
             AddEntityCommand = new DelegateCommand(AddEntity);
             AddRelationshipCommand = new DelegateCommand(AddRelationship);
+            AddTransformationModelModelCommand = new DelegateCommand(AddTransformationModelModel);
+            AddTransformationModelTextCommand = new DelegateCommand(AddTransformationModelText);
             DeleteEntityCommand = new DelegateCommand(DeleteEntity);
             DeleteRelationshipCommand = new DelegateCommand(DeleteRelationship);
             DeleteTransformationModelTextCommand = new DelegateCommand(DeleteTransformationModelText);
             DeleteTransformationModelModelCommand = new DelegateCommand(DeleteTransformationModelModel);
             EditEntityCommand = new DelegateCommand(EditEntity);
             EditRelationshipCommand = new DelegateCommand(EditRelationship);
+            EditTransformationModelModelCommand = new DelegateCommand(EditTransformationModelModel);
+            EditTransformationModelTextCommand = new DelegateCommand(EditTransformationModelText);
             SaveCommand = new DelegateCommand(Save);
         }
 
@@ -163,6 +168,64 @@ namespace Course2.ViewModels
                 {
                     Relationships.Insert(Relationships.IndexOf(SelectedRelationship), vm.Relationship);
                     Relationships.Remove(SelectedRelationship);
+                }
+            }
+        }
+
+        private void AddTransformationModelModel()
+        {
+            var transformation = new TransformationModelModel();
+            var transformationWindow = new TransformationModelModelWindow(transformation);
+            var result = transformationWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (transformationWindow.DataContext is TransformationModelModelViewModel vm)
+                {
+                    TransformationsModelModel.Add(vm.TransformationModelModel);
+                }
+            }
+        }
+
+        private void EditTransformationModelModel()
+        {
+            if(SelectedTransformationModelModel==null)return;
+            var transformationWindow = new TransformationModelModelWindow(SelectedTransformationModelModel);
+            var result = transformationWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (transformationWindow.DataContext is TransformationModelModelViewModel vm)
+                {
+                    TransformationsModelModel.Insert(TransformationsModelModel.IndexOf(SelectedTransformationModelModel), vm.TransformationModelModel);
+                    TransformationsModelModel.Remove(SelectedTransformationModelModel);
+                }
+            }
+        }
+
+        private void AddTransformationModelText()
+        {
+            var transformation = new TransformationModelModel();
+            var transformationWindow = new TransformationModelModelWindow(transformation);
+            var result = transformationWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (transformationWindow.DataContext is TransformationModelModelViewModel vm)
+                {
+                    TransformationsModelModel.Add(vm.TransformationModelModel);
+                }
+            }
+        }
+
+        private void EditTransformationModelText()
+        {
+            if (SelectedTransformationModelText == null) return;
+            var transformationWindow = new TransformationModelTextWindow(SelectedTransformationModelText);
+            var result = transformationWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                if (transformationWindow.DataContext is TransformationModelTextViewModel vm)
+                {
+                    TransformationsModelText.Insert(TransformationsModelText.IndexOf(SelectedTransformationModelText), vm.TransformationModelText);
+                    TransformationsModelText.Remove(SelectedTransformationModelText);
                 }
             }
         }

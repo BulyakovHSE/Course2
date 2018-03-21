@@ -15,7 +15,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -26,7 +25,7 @@
                 <Button Content="Отмена" Command="{Binding CloseCommand}" IsCancel="True"/>
             </StackPanel>
             <TextBlock Text="Имя модели: "/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -114,13 +113,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Трансформации модель-текст: " TextWrapping="Wrap"/>
                     <ListBox Grid.Row="1" ItemsSource="{Binding TransformationsModelText}"
-                         SelectedItem="{Binding SelectedTransformationModelText}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="model:TransformationModelText">
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                         SelectedItem="{Binding SelectedTransformationModelText}" ItemTemplate="{StaticResource TransformationModelTextTemplate}"/>
                 </Grid>
                 <Button Command="{Binding AddTransformationModelTextCommand}" 
                         Content="Добавить" Grid.Row="1" Grid.Column="0"/>
@@ -146,13 +139,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Трансформации модель-модель: " TextWrapping="Wrap"/>
                     <ListBox Grid.Row="1" ItemsSource="{Binding TransformationsModelModel}"
-                         SelectedItem="{Binding SelectedTransformationModelModel}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="model:TransformationModelModel">
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                         SelectedItem="{Binding SelectedTransformationModelModel}" ItemTemplate="{StaticResource TransformationModelModelTemplate}"/>
                 </Grid>
                 <Button Command="{Binding AddTransformationModelModelCommand}" 
                         Content="Добавить" Grid.Row="1" Grid.Column="0"/>
