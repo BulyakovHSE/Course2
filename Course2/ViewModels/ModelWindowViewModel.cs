@@ -203,14 +203,14 @@ namespace Course2.ViewModels
 
         private void AddTransformationModelText()
         {
-            var transformation = new TransformationModelModel();
-            var transformationWindow = new TransformationModelModelWindow(transformation);
+            var transformation = new TransformationModelText();
+            var transformationWindow = new TransformationModelTextWindow(transformation);
             var result = transformationWindow.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                if (transformationWindow.DataContext is TransformationModelModelViewModel vm)
+                if (transformationWindow.DataContext is TransformationModelTextViewModel vm)
                 {
-                    TransformationsModelModel.Add(vm.TransformationModelModel);
+                    TransformationsModelText.Add(vm.TransformationModelText);
                 }
             }
         }

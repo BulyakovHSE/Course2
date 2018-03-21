@@ -82,15 +82,13 @@ namespace Course2.ViewModels
                     var m = vm.Model;
                     try
                     {
-                        //_container.ModelGraphSet.Attach(SelectedModelGraph);
-                        //_container.ModelGraphSet.Remove(SelectedModelGraph);
-                        //_container.ModelGraphSet.Add(vm.Model);
                         var model = _container.ModelGraphSet.First(x => x.Id == SelectedModelGraph.Id);
                         model.Name = m.Name;
-                        SynchronizeEntities(model, m.Entities);
-                        //model.Relationships = m.Relationships;
-                        //model.TransformationsModelModel = m.TransformationsModelModel;
-                        //model.TransformationsModelText = m.TransformationsModelText;
+                        SynchronizeEntities(model.Entities, m.Entities);
+                        SynchronizeRelationships(model.Relationships, m.Relationships);
+                        SynchronizeTransformationsModelModel(model.TransformationsModelModel, m.TransformationsModelModel);
+                        SynchronizeTransformationsModelText(model.TransformationsModelText, m.TransformationsModelText);
+
                         _container.SaveChanges();
                         Models.Insert(Models.IndexOf(SelectedModelGraph), vm.Model);
                         Models.Remove(SelectedModelGraph);
@@ -104,16 +102,16 @@ namespace Course2.ViewModels
             }
         }
 
-        private void SynchronizeAttributes(Entity entity,
+        private void SynchronizeAttributes(ICollection<Attribute> attributes,
             ICollection<Attribute> synchronizeWith)
         {
             var findedIds = new List<int>();
             findedIds.Add(0);
             foreach (var attribute in synchronizeWith.ToList())
             {
-                if (entity.Attributes.Any(x => x.Id == attribute.Id))
+                if (attributes.Any(x => x.Id == attribute.Id))
                 {
-                    var atr = entity.Attributes.First(x => x.Id == attribute.Id);
+                    var atr = attributes.First(x => x.Id == attribute.Id);
                     atr.DefaultValue = attribute.DefaultValue;
                     atr.Description = attribute.Description;
                     atr.Value = attribute.Value;
@@ -123,27 +121,81 @@ namespace Course2.ViewModels
                 }
                 else
                 {
-                    entity.Attributes.Add(attribute);
+                    attributes.Add(attribute);
                 }
             }
 
-            var attributesToDelete = entity.Attributes.Where(x => !findedIds.Contains(x.Id)).ToList();
+            var attributesToDelete = attributes.Where(x => !findedIds.Contains(x.Id)).ToList();
             foreach (var attribute in attributesToDelete)
             {
-                entity.Attributes.Remove(attribute);
+                attributes.Remove(attribute);
             }
         }
 
-        private void SynchronizeEntities(ModelGraph model, ICollection<Entity> synchronizeWith)
+        private void SynchronizeTransformationRules(ICollection<TransformationRuleModelModel> transformationRules,
+            ICollection<TransformationRuleModelModel> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            findedIds.Add(0);
+            foreach (var transformationRuleModelModel in synchronizeWith.ToList())
+            {
+                if (transformationRules.Any(x => x.Id == transformationRuleModelModel.Id))
+                {
+                    var first = transformationRules.First(x => x.Id == transformationRuleModelModel.Id);
+                    first.Final = transformationRuleModelModel.Final;
+                    first.Initial = transformationRuleModelModel.Initial;
+                    findedIds.Add(transformationRuleModelModel.Id);
+                }
+                else
+                {
+                    transformationRules.Add(transformationRuleModelModel);
+                }
+            }
+
+            var toDelete = transformationRules.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var transformationRuleModelModel in toDelete)
+            {
+                transformationRules.Remove(transformationRuleModelModel);
+            }
+        }
+
+        private void SynchronizeTransformationRules(ICollection<TransformationRuleModelText> transformationRules,
+            ICollection<TransformationRuleModelText> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            findedIds.Add(0);
+            foreach (var transformationRuleModelModel in synchronizeWith.ToList())
+            {
+                if (transformationRules.Any(x => x.Id == transformationRuleModelModel.Id))
+                {
+                    var first = transformationRules.First(x => x.Id == transformationRuleModelModel.Id);
+                    first.Final = transformationRuleModelModel.Final;
+                    first.Initial = transformationRuleModelModel.Initial;
+                    findedIds.Add(transformationRuleModelModel.Id);
+                }
+                else
+                {
+                    transformationRules.Add(transformationRuleModelModel);
+                }
+            }
+
+            var toDelete = transformationRules.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var transformationRuleModelModel in toDelete)
+            {
+                transformationRules.Remove(transformationRuleModelModel);
+            }
+        }
+
+        private void SynchronizeEntities(ICollection<Entity> entities, ICollection<Entity> synchronizeWith)
         {
             var findedIds = new List<int>();
             findedIds.Add(0);
             foreach (var entity in synchronizeWith.ToList())
             {
-                if (model.Entities.Any(x => x.Id == entity.Id))
+                if (entities.Any(x => x.Id == entity.Id))
                 {
-                    var ent = model.Entities.First(x => x.Id == entity.Id);
-                    SynchronizeAttributes(ent, entity.Attributes);
+                    var ent = entities.First(x => x.Id == entity.Id);
+                    SynchronizeAttributes(ent.Attributes, entity.Attributes);
                     ent.InstanceCount = entity.InstanceCount;
                     ent.Name = entity.Name;
                     ent.NameUniqueFlag = entity.NameUniqueFlag;
@@ -151,14 +203,100 @@ namespace Course2.ViewModels
                 }
                 else
                 {
-                    model.Entities.Add(entity);
+                    entities.Add(entity);
                 }
             }
 
-            var entitiesToDelete = model.Entities.Where(x => !findedIds.Contains(x.Id)).ToList();
+            var entitiesToDelete = entities.Where(x => !findedIds.Contains(x.Id)).ToList();
             foreach (var entity in entitiesToDelete)
             {
-                model.Entities.Remove(entity);
+                entities.Remove(entity);
+            }
+        }
+
+        private void SynchronizeRelationships(ICollection<Relationship> relationships, ICollection<Relationship> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            findedIds.Add(0);
+            foreach (var relationship in synchronizeWith.ToList())
+            {
+                if (relationships.Any(x => x.Id == relationship.Id))
+                {
+                    var rel = relationships.First(x => x.Id == relationship.Id);
+                    SynchronizeAttributes(rel.Attributes, rel.Attributes);
+                    rel.Entity1 = relationship.Entity1;
+                    rel.Entity2 = relationship.Entity2;
+                    rel.Name = relationship.Name;
+                    rel.Multiplicity1 = relationship.Multiplicity1;
+                    rel.Multiplicity2 = relationship.Multiplicity2;
+                    rel.NameUniqueFlag = relationship.NameUniqueFlag;
+                    rel.Type = relationship.Type;
+                    findedIds.Add(rel.Id);
+                }
+                else
+                {
+                    relationships.Add(relationship);
+                }
+            }
+
+            var toDelete = relationships.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var relationship in toDelete)
+            {
+                relationships.Remove(relationship);
+            }
+        }
+
+        private void SynchronizeTransformationsModelModel(ICollection<TransformationModelModel> transformations,
+            ICollection<TransformationModelModel> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            findedIds.Add(0);
+            foreach (var transformationModelModel in synchronizeWith.ToList())
+            {
+                if (transformations.Any(x => x.Id == transformationModelModel.Id))
+                {
+                    var first = transformations.First(x => x.Id == transformationModelModel.Id);
+                    first.Name = transformationModelModel.Name;
+                    SynchronizeTransformationRules(first.TransformationRules, transformationModelModel.TransformationRules);
+                    findedIds.Add(transformationModelModel.Id);
+                }
+                else
+                {
+                    transformations.Add(transformationModelModel);
+                }
+            }
+
+            var toDelete = transformations.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var transformationModelModel in toDelete)
+            {
+                transformations.Remove(transformationModelModel);
+            }
+        }
+
+        private void SynchronizeTransformationsModelText(ICollection<TransformationModelText> transformations,
+            ICollection<TransformationModelText> synchronizeWith)
+        {
+            var findedIds = new List<int>();
+            findedIds.Add(0);
+            foreach (var transformationModelText in synchronizeWith.ToList())
+            {
+                if (transformations.Any(x => x.Id == transformationModelText.Id))
+                {
+                    var first = transformations.First(x => x.Id == transformationModelText.Id);
+                    first.Name = transformationModelText.Name;
+                    SynchronizeTransformationRules(first.TransformationRules, transformationModelText.TransformationRules);
+                    findedIds.Add(transformationModelText.Id);
+                }
+                else
+                {
+                    transformations.Add(transformationModelText);
+                }
+            }
+
+            var toDelete = transformations.Where(x => !findedIds.Contains(x.Id)).ToList();
+            foreach (var transformationModelModel in toDelete)
+            {
+                transformations.Remove(transformationModelModel);
             }
         }
     }

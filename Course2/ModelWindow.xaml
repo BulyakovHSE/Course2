@@ -117,9 +117,12 @@
                 </Grid>
                 <Button Command="{Binding AddTransformationModelTextCommand}" 
                         Content="Добавить" Grid.Row="1" Grid.Column="0"/>
+                <Button Command="{Binding EditTransformationModelTextCommand}" 
+                        IsEnabled="{Binding SelectedTransformationModelText, Converter={StaticResource ObjectToBoolConverter}}"
+                        Content="Изменить" Grid.Row="1" Grid.Column="1"/>
                 <Button Command="{Binding DeleteTransformationModelTextCommand}" 
                         IsEnabled="{Binding SelectedTransformationModelText, Converter={StaticResource ObjectToBoolConverter}}"
-                        Content="Удалить" Grid.Row="1" Grid.Column="1"/>
+                        Content="Удалить" Grid.Row="1" Grid.Column="2"/>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="1">
@@ -143,9 +146,12 @@
                 </Grid>
                 <Button Command="{Binding AddTransformationModelModelCommand}" 
                         Content="Добавить" Grid.Row="1" Grid.Column="0"/>
+                <Button Command="{Binding EditTransformationModelModelCommand}"
+                        IsEnabled="{Binding SelectedTransformationModelModel, Converter={StaticResource ObjectToBoolConverter}}"
+                        Content="Изменить" Grid.Row="1" Grid.Column="1"/>
                 <Button Command="{Binding DeleteTransformationModelModelCommand}"
                         IsEnabled="{Binding SelectedTransformationModelModel, Converter={StaticResource ObjectToBoolConverter}}"
-                        Content="Удалить" Grid.Row="1" Grid.Column="1"/>
+                        Content="Удалить" Grid.Row="1" Grid.Column="2"/>
             </Grid>
         </Grid>
     </Grid>
