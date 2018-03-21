@@ -24,6 +24,7 @@ namespace Course2.ViewModels
             LoadModelsCommand = new DelegateCommand(LoadModels);
             CreateNewModelCommand = new DelegateCommand(CreateNewModel);
             EditModelGraphCommand = new DelegateCommand(EditModelGraph);
+            DeleteModelGraphCommand = new DelegateCommand(DeleteModelGraph);
             _container = new VmaContainer();
         }
 
@@ -36,6 +37,8 @@ namespace Course2.ViewModels
         public DelegateCommand CreateNewModelCommand { get; set; }
 
         public DelegateCommand EditModelGraphCommand { get; set; }
+
+        public DelegateCommand DeleteModelGraphCommand { get; set; }
 
         public void LoadModels()
         {
@@ -95,10 +98,58 @@ namespace Course2.ViewModels
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show("Не удалось сохранить изменений в базе данных\n" + e.Message, "Ошибка", MessageBoxButton.OK,
+                        MessageBox.Show("Не удалось сохранить изменения в базе данных\n" + e.Message, "Ошибка", MessageBoxButton.OK,
                             MessageBoxImage.Error);
                     }
                 }
+            }
+        }
+
+        private void DeleteModelGraph()
+        {
+            if(SelectedModelGraph == null) return;
+            try
+            {
+                foreach (var relationship in SelectedModelGraph.Relationships.ToList())
+                {
+                    foreach (var relationshipAttribute in relationship.Attributes.ToList())
+                        _container.AttributeSet.Remove(relationshipAttribute);
+
+                    _container.RelationshipSet.Remove(relationship);
+                }
+
+                foreach (var entity in SelectedModelGraph.Entities.ToList())
+                {
+                    foreach (var entityAttribute in entity.Attributes.ToList())
+                        _container.AttributeSet.Remove(entityAttribute);
+
+                    _container.EntitySet.Remove(entity);
+                }
+
+                foreach (var transformationModelModel in SelectedModelGraph.TransformationsModelModel.ToList())
+                {
+                    foreach (var transformationRuleModelModel in transformationModelModel.TransformationRules.ToList())
+                        _container.TransformationRuleModelModelSet.Remove(transformationRuleModelModel);
+
+                    _container.TransformationModelModelSet.Remove(transformationModelModel);
+                }
+
+                foreach (var transformationModelText in SelectedModelGraph.TransformationsModelText.ToList())
+                {
+                    foreach (var transformationRuleModelText in transformationModelText.TransformationRules.ToList())
+                        _container.TransformationRuleModelTextSet.Remove(transformationRuleModelText);
+
+                    _container.TransformationModelTextSet.Remove(transformationModelText);
+                }
+
+                _container.ModelGraphSet.Remove(SelectedModelGraph);
+                Models.Remove(SelectedModelGraph);
+                _container.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Не удалось сохранить изменения в базе данных\n" + e.Message, "Ошибка", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

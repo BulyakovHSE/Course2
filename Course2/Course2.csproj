@@ -164,6 +164,12 @@
     <Compile Include="TransformationModelTextWindow.xaml.cs">
       <DependentUpon>TransformationModelTextWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TransformationRuleModelModelWindow.xaml.cs">
+      <DependentUpon>TransformationRuleModelModelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransformationRuleModelTextWindow.xaml.cs">
+      <DependentUpon>TransformationRuleModelTextWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AttributeWindowViewModel.cs" />
     <Compile Include="ViewModels\EntityWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -171,6 +177,8 @@
     <Compile Include="ViewModels\RelationshipWindowViewModel.cs" />
     <Compile Include="ViewModels\TransformationModelModelViewModel.cs" />
     <Compile Include="ViewModels\TransformationModelTextViewModel.cs" />
+    <Compile Include="ViewModels\TransformationRuleModelModelViewModel.cs" />
+    <Compile Include="ViewModels\TransformationRuleModelTextViewModel.cs" />
     <Page Include="AttributeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +212,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TransformationModelTextWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransformationRuleModelModelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransformationRuleModelTextWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
